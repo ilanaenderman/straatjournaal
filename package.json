@@ -1,0 +1,28 @@
+{
+  "name": "straatjournaal-app",
+  "version": "0.0.1",
+  "description": "App for people who want to buy the street journal but don't have any cash on them",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilanaenderman/straatjournaal.git"
+  },
+  "author": "Ilana Enderman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ilanaenderman/straatjournaal/issues"
+  },
+  "homepage": "https://github.com/ilanaenderman/straatjournaal#readme",
+  "dependencies": {
+    "bcrypt-node": "^0.1.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "node-sass": "^3.13.0",
+    "pg": "^6.1.0",
+    "pug": "^2.0.0-beta6",
+    "sequelize": "^3.27.0"
+  }
+}
