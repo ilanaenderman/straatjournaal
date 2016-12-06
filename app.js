@@ -10,7 +10,7 @@ const app			= express()
 
 
 // Requiring Modules
-const db			= require(__dirname + '/models/database.js')
+const db			= require(__dirname + '/modules/database.js')
 
 
 // Setting the pug views
@@ -24,11 +24,17 @@ app.use( bodyParser.urlencoded({extended: true}))
 // Initialize Routes
 let homeRoute		= require(__dirname + '/routes/home')
 let searchRoute		= require(__dirname + '/routes/search')
-let profileRoute	= require(__dirname + '/route/profile')
+let contactRoute	= require(__dirname + '/routes/contact')
+let aboutRoute		= require(__dirname + '/routes/about')
+let profileRoute	= require(__dirname + '/routes/profile')
+let adminRoute		= require(__dirname + '/routes/administratie')
 
 app.use( homeRoute)
 app.use( searchRoute)
+app.use( contactRoute)
+app.use( aboutRoute)
 app.use( profileRoute)
+app.use( adminRoute)
 
 
 // Listen port 8000
