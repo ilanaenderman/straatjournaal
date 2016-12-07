@@ -16,13 +16,14 @@ router.post('/administratie', (request, response) => {
 	let age		= request.body.age
 	let location= request.body.location
 	let bio		= request.body.bio
-	console.log(name + " " + age + " " + location + " " + bio)
+	let photo 	= request.body.photo
 
 	db.salesman.create({
 		name: name,
 		age: age,
 		location: location,
-		bio: bio
+		bio: bio,
+		photo: photo
 	}).then( newProfile => {
 		response.redirect('/administratie?message=' + encodeURIComponent("Nieuw profiel toegevoegd."))
 	})
