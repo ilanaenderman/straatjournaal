@@ -26,14 +26,12 @@ let homeRoute		= require(__dirname + '/routes/home')
 let searchRoute		= require(__dirname + '/routes/search')
 let contactRoute	= require(__dirname + '/routes/contact')
 let aboutRoute		= require(__dirname + '/routes/about')
-let profileRoute	= require(__dirname + '/routes/profile')
 let adminRoute		= require(__dirname + '/routes/administratie')
 
 app.use( homeRoute)
 app.use( searchRoute)
 app.use( contactRoute)
 app.use( aboutRoute)
-app.use( profileRoute)
 app.use( adminRoute)
 
 

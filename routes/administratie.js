@@ -6,7 +6,9 @@ const db		= require(__dirname + '/../modules/database')
 // GET
 
 router.get('/administratie', (request, response) => {
-	response.render('administratie', {message: request.query.message})
+	db.salesman.findAll().then( salesman => {
+		response.render('administratie', {salesman: salesman, message: request.query.message})
+	})
 })
 
 router.post('/administratie', (request, response) => {
@@ -22,7 +24,7 @@ router.post('/administratie', (request, response) => {
 		location: location,
 		bio: bio
 	}).then( newProfile => {
-		response.redirect('/administratie?message=' + encodeURIComponent("Geslaagd"))
+		response.redirect('/administratie?message=' + encodeURIComponent("Nieuw profiel toegevoegd."))
 	})
 })
 

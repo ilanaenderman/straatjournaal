@@ -27,7 +27,7 @@ html.no-js
 		//- Animate.css
 		link(rel="stylesheet" href="css/animate.css")
 		//- Icomoon Icon Fonts
-		link(rel="stylesheet" href="css/icomoon.css")
+		//- link(rel="stylesheet" href="css/icomoon.css")
 		//- Simple Line Icons
 		link(rel="stylesheet" href="css/simple-line-icons.css")
 		//- Bootstrap
@@ -62,19 +62,21 @@ html.no-js
 		div.container
 			div.row
 				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
-					h2 Verkoper
-					p
-						span naam verkoper
+					each thing in profile
+						h2 #{thing.name}
+						p
+							span #{thing.location}
 			div.row
 				div.col-md-8
 					div.row
-						div.col-md-12
-							div.about-inner
-								img.img-reponsive(src='images/image_about.jpg' alt='About')
-								h3 Biografie
-								p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-								blockquote
-									p Hier komt een quote van de verkoper.
+						each thing in profile
+							div.col-md-12
+								div.about-inner
+									img.img-reponsive(src='images/image_about.jpg' alt='About')
+									h3 Biografie
+									p #{thing.bio}
+									blockquote
+										p Hier komt een quote van de verkoper.
 				div.col-md-4
 					aside.sidebar
 						div.row
