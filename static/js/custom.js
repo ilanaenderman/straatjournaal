@@ -7,3 +7,13 @@ $(document).ready( function () {
 		}
 	})
 })
+
+// Send id salesman when customer buys a newspaper
+$(document).ready( function () {
+	$('#2button').click( function () {
+		var salesmandID =  { 
+			input: $("#2button").val(),
+			name: salesmanID
+		}
+	})
+})

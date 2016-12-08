@@ -13,7 +13,7 @@ db.conn = new sequelize('straatjournaal', process.env.POSTGRES_USER, process.env
 
 
 // Models
-db.salesman = db.conn.define('seller', {
+db.salesman = db.conn.define('salesman', {
 	name: sequelize.STRING, 
 	bio: sequelize.TEXT,
 	age: sequelize.INTEGER,
@@ -22,9 +22,8 @@ db.salesman = db.conn.define('seller', {
 })
 
 db.sale = db.conn.define('sale', {
-	amount: sequelize.FLOAT,
-	date: sequelize.DATE,
-	time: sequelize.TIME,
+	amount: sequelize.INTEGER,
+	number: sequelize.INTEGER
 })
 
 

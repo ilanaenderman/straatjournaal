@@ -19,4 +19,19 @@ router.post('/search', (request, response) => {
 	})
 })
 
+router.post('/profile', (request, response) => {
+	let number = request.body.number
+	let amount = 2
+	let salesmanId = request.body.salesmanID
+
+	db.sale.create({
+		number: number,
+		amount: amount,
+		salesmanId: salesmanId
+	}).then( sold => {
+		console.log(sold)
+		response.redirect('/profile?message=' + encodeURIComponent("Betaling gelukt"))
+	})
+})
+
 module.exports = router
