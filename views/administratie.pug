@@ -115,10 +115,10 @@ html.no-js
 								a(href='#') #{thing.name}
 							h5 Leeftijd: #{thing.age}
 							h5 Lokatie: #{thing.location}
-							h5 Inkomsten: 
-							h5 Aantal kranten verkocht: 
-							h5 &nbsp;
-								a.btn.btn-primary.btn-outline.with-arrow(href='/profile') Lees meer
+							h5 Inkomsten: € #{thing.income}
+							h5 Aantal kranten verkocht:  #{thing.saleAmount}
+						div.desc
+							a.btn.btn-primary.btn-outline.with-arrow(href='/profile') Lees meer
 									i.icon-arrow-right
 
 	footer#fh5co-footer(role='contentinfo')
