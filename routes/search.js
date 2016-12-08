@@ -22,20 +22,41 @@ router.post('/search', (request, response) => {
 
 router.post('/profile', (request, response) => {
 	let number = request.body.number
-	let amount = 2
+	let saleAmount = 2 * number
 	let salesmanId = request.body.salesmanID
 
 	db.sale.create({
 		number: number,
-		amount: amount,
+		saleAmount: saleAmount,
 		salesmanId: salesmanId
-	}).then( sold => {
-		db.salesman.findAll({
-			where: {id: salesmanId}
-		}).then( profile => {
-			response.render('profile', {message: "Betaling gelukt", profile: profile})
-		})
+	})
+
+	db.salesman.findOne({
+		where: {id: salesmanId},
+		attributes: ['id', 'saleAmount', 'income']
+	}).then( addInfo => {
+		if( addInfo.saleAmount == null) {
+			addInfo.saleAmount = 0
+		}
+
+		if( addInfo.income == null) {
+			addInfo.income = 0
+		}
+
+		addInfo.update({
+			saleAmount: addInfo.saleAmount + Number(number),
+			income: addInfo.income + saleAmount
+		}).then( addInfo => {
+			console.log( addInfo)
+			db.salesman.findAll({
+				where: {id: salesmanId}
+			}).then( profile => {
+				response.render('profile', {message: "Betaling gelukt", profile: profile})
+			})
+		})	
 	})
 })
+
+	
 
 module.exports = router

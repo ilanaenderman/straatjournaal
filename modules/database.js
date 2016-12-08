@@ -18,7 +18,9 @@ db.salesman = db.conn.define('salesman', {
 	bio: sequelize.TEXT,
 	age: sequelize.INTEGER,
 	location: sequelize.STRING,
-	photo: sequelize.STRING
+	photo: sequelize.STRING,
+	saleAmount: sequelize.INTEGER,
+	income: sequelize.INTEGER
 })
 
 db.sale = db.conn.define('sale', {
