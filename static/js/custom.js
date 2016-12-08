@@ -8,12 +8,16 @@ $(document).ready( function () {
 	})
 })
 
-// Send id salesman when customer buys a newspaper
-$(document).ready( function () {
-	$('#2button').click( function () {
-		var salesmandID =  { 
-			input: $("#2button").val(),
-			name: salesmanID
+// AJAX!! Send id salesman when customer buys a newspaper
+$(document).ready(function() {
+    $('#button2').submit(function(event) {
+		event.preventDefault()
+		var profile = {
+			number: 	$("#number").val(),
+			salesmanID: $("#salesmanID").val(),
 		}
+    	$.post("/profile", profile, function(response) {
+        	$("#message").html(response.message)
+    	})
 	})
 })

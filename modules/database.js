@@ -32,7 +32,20 @@ db.salesman.hasMany(db.sale)
 db.sale.belongsTo(db.salesman)
 
 // Create test user
-db.conn.sync({force: true})
+db.conn.sync({force: true}).then( database => {
+	db.salesman.create({
+		name: 'Ilana Enderman',
+		bio: 'blaaa blaabla bla blaaaaaa bla bla bllaaaa blaa',
+		age: 27,
+		location: 'Haarlem'
+	})
+	db.salesman.create({
+		name: 'Laura Kramer',
+		bio: 'blaaa blaabla bla blaaaaaa bla bla bllaaaa blaa',
+		age: 26,
+		location: 'Voorschoten'
+	})
+})
 
 // Export
 module.exports = db

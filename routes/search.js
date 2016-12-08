@@ -19,6 +19,7 @@ router.post('/search', (request, response) => {
 	})
 })
 
+
 router.post('/profile', (request, response) => {
 	let number = request.body.number
 	let amount = 2
@@ -29,8 +30,11 @@ router.post('/profile', (request, response) => {
 		amount: amount,
 		salesmanId: salesmanId
 	}).then( sold => {
-		console.log(sold)
-		response.redirect('/profile?message=' + encodeURIComponent("Betaling gelukt"))
+		db.salesman.findAll({
+			where: {id: salesmanId}
+		}).then( profile => {
+			response.render('profile', {message: "Betaling gelukt", profile: profile})
+		})
 	})
 })
 

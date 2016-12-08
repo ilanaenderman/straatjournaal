@@ -87,18 +87,18 @@ html.no-js
 									div.row
 										div.col-md-5
 											div.form-group
-												input.form-control(name='number' placeholder='Aantal' type='text' required)
+												input#number.form-control(name='number' placeholder='Aantal' type='text' required)
 										div.col-md-7
 											div.form-group
 												input.form-control(name='amount' placeholder='€2')
 										div.col-md-12
 											each thing in profile
 												div.form-group
-													input.form-control(name='salesmanID' value= thing.id type='hidden')
+													input#salesmanID.form-control(name='salesmanID' value= thing.id type='hidden')
 										div.col-md-12
 											div.form-group
-												input#2button.btn.btn-primary(value='Koop' type='submit')
-								p hier komt een functie om geld over te maken.
+												input#button2.btn.btn-primary(value='Koop' type='submit')
+								h4#message= message
 
 			
 				
