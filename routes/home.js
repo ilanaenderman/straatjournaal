@@ -33,4 +33,12 @@ router.get('/', (request, response) => {
 	})
 })
 
+router.post('/', (request, response) => {
+	db.salesman.findAll({
+		where: {id: request.body.ID}
+	}).then( profile => {
+		response.render('profile', {profile: profile})
+	})
+})
+
 module.exports = router

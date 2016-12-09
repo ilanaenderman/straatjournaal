@@ -73,8 +73,8 @@ html.no-js
 					p Selecteer je lokale verkoper, lees hun verhaal en/of maak geld over voor een krant.
 
 			div.row
-				div.col-md-4.text-center
-					each thing in idOne
+				each thing in idOne
+					div.col-md-4.text-center
 						div.blog-inner
 							a(href='#')
 								img.img-responsive(src='images/image_4.jpg' alt='Blog')
@@ -83,10 +83,10 @@ html.no-js
 									a(href='#') #{thing.name}
 								p Verkoopt het Straatjournaal in #{thing.location}
 								p
-									a.btn.btn-primary.btn-outline.with-arrow(href='/profile') Lees meer
-										i.icon-arrow-right
-				div.col-md-4.text-center
-					each thing in idTwo
+									form(method='post' action='/search')
+										button#button.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Lees meer
+				each thing in idTwo
+					div.col-md-4.text-center
 						div.blog-inner
 							a(href='#')
 								img.img-responsive(src='images/image_5.jpg' alt='Blog')
@@ -95,10 +95,10 @@ html.no-js
 									a(href='#') #{thing.name}
 								p Verkoopt het Straatjournaal in #{thing.location}
 								p
-									a.btn.btn-primary.btn-outline.with-arrow(href='/profile') Lees meer
-										i.icon-arrow-right
-				div.col-md-4.text-center
-					each thing in idThree
+									form(method='post' action='/search')
+										button#button.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Lees meer
+				each thing in idThree
+					div.col-md-4.text-center
 						div.blog-inner
 							a(href='#')
 								img.img-responsive(src='images/image_6.jpg' alt='Blog')
@@ -107,8 +107,8 @@ html.no-js
 									a(href='#') #{thing.name}
 								p Verkoopt het Straatjournaal in #{thing.location}
 								p
-									a.btn.btn-primary.btn-outline.with-arrow(href='/profile') Lees meer
-										i.icon-arrow-right
+									form(method='post' action='/search')
+										button#button.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Lees meer
 
 	footer#fh5co-footer(role='contentinfo')
 		div.container

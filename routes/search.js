@@ -10,7 +10,7 @@ router.get('/search', (request, response) => {
 		response.render('search', {salesman: salesman})
 	})
 })
-
+// Goes to profile page of salesman
 router.post('/search', (request, response) => {
 	db.salesman.findAll({
 		where: {id: request.body.ID}
@@ -19,18 +19,20 @@ router.post('/search', (request, response) => {
 	})
 })
 
-
+// AJAX Response when payment is succesfull
 router.post('/profile', (request, response) => {
 	let number = request.body.number
-	let saleAmount = 2 * number
+	let saleAmount = 0.9 * number
 	let salesmanId = request.body.salesmanID
 
+	//Create new Sale
 	db.sale.create({
 		number: number,
 		saleAmount: saleAmount,
 		salesmanId: salesmanId
 	})
 
+	// Find salesman that belongs to the sale
 	db.salesman.findOne({
 		where: {id: salesmanId},
 		attributes: ['id', 'saleAmount', 'income']
@@ -43,11 +45,11 @@ router.post('/profile', (request, response) => {
 			addInfo.income = 0
 		}
 
+		// Update total sale and income of salesman
 		addInfo.update({
 			saleAmount: addInfo.saleAmount + Number(number),
 			income: addInfo.income + saleAmount
 		}).then( addInfo => {
-			console.log( addInfo)
 			db.salesman.findAll({
 				where: {id: salesmanId}
 			}).then( profile => {

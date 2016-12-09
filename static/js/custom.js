@@ -21,3 +21,20 @@ $(document).ready(function() {
     	})
 	})
 })
+
+$(document).ready( function () {
+	$('#button3').click( function () {
+		event.preventDefault()
+		var ID =  { 
+			input: 		$("#button3").val(),
+			name: 		$("#name").val(),
+			age: 		$("#age").val(),
+			location: 	$("#location").val(),
+			bio: 		$("#bio").val(),
+			photo: 		$("#photo").val()
+		}
+		$.post("/updateAdmin", ID, function(response) {
+			$("#message").html(response.message)
+		})
+	})
+})

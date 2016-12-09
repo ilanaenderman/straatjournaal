@@ -72,31 +72,31 @@ html.no-js
 				div.col-md-8.col-md-offset-2.text-center
 					h2 Maak een nieuw profiel aan
 			div.row
-				form(action='/administratie' method='post')
+				form(action='/updateAdmin' method='post')
 					div.col-md-6
 						div.row
 							div.col-md-12
 								div.form-group
-									input.form-control(name='name' placeholder='Naam' type='text'
+									input#name.form-control(name='name' placeholder='Naam' type='text'
 									required) 
 							div.col-md-12
 								div.form-group
-									input.form-control(name='age' placeholder='Leeftijd' type='text' required)
+									input#age.form-control(name='age' placeholder='Leeftijd' type='text' required)
 							div.col-md-12
 								div.form-group
-									input.form-control(name='location' placeholder='Lokatie' type='text'
+									input#location.form-control(name='location' placeholder='Lokatie' type='text'
 									required)
 					div.col-md-6
 						div.row
 							div.col-md-12
 								div.form-group
-									textarea.form-control(name='bio' placeholder='Bio' id='' cols='30' rows='4' required)
+									textarea#bio.form-control(name='bio' placeholder='Bio' cols='30' rows='4' required)
 							div.col-md-12
 								div.form-group
-									input.form-control(name='photo' placeholder='Upload foto' type='file')
+									input#photo.form-control(name='photo' placeholder='Upload foto' type='file')
 					div.col-md-12
 						div.form-group.center-align
-							input.btn.btn-primary(value='Maak aan' type='submit')
+							input#button3.btn.btn-primary(value='Maak aan' type='submit')
 			h4= message
 
 	div#fh5co-intro-section
@@ -118,8 +118,8 @@ html.no-js
 							h5 Inkomsten: € #{thing.income}
 							h5 Aantal kranten verkocht:  #{thing.saleAmount}
 						div.desc
-							a.btn.btn-primary.btn-outline.with-arrow(href='/profile') Lees meer
-									i.icon-arrow-right
+							form(method='post' action='/administratie')
+								button#button3.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Update
 
 	footer#fh5co-footer(role='contentinfo')
 		div.container

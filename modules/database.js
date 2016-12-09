@@ -20,7 +20,7 @@ db.salesman = db.conn.define('salesman', {
 	location: sequelize.STRING,
 	photo: sequelize.STRING,
 	saleAmount: sequelize.INTEGER,
-	income: sequelize.INTEGER
+	income: sequelize.FLOAT
 })
 
 db.sale = db.conn.define('sale', {

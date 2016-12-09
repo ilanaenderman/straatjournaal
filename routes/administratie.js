@@ -12,12 +12,24 @@ router.get('/administratie', (request, response) => {
 })
 
 router.post('/administratie', (request, response) => {
+	db.salesman.findAll({
+		where: {id: request.body.ID}
+	}).then( update => {
+		response.render('updateAdmin', {update: update})
+	})
+})
+
+// router.get('/updateAdmin', (request, response) => {
+
+// })
+
+router.post('/updateAdmin', (request, response) => {
 	let name 	= request.body.name
 	let age		= request.body.age
 	let location= request.body.location
 	let bio		= request.body.bio
 	let photo 	= request.body.photo
-
+	
 	db.salesman.create({
 		name: name,
 		age: age,
@@ -25,8 +37,12 @@ router.post('/administratie', (request, response) => {
 		bio: bio,
 		photo: photo
 	}).then( newProfile => {
-		response.redirect('/administratie?message=' + encodeURIComponent("Nieuw profiel toegevoegd."))
+		db.salesman.findAll(
+			).then( salesman => {
+				response.render('administratie', {salesman: salesman, message: "Nieuw profiel toegevoegd."})
+			})
 	})
 })
+
 
 module.exports = router

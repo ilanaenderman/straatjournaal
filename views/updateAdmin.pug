@@ -2,7 +2,7 @@ html.no-js
 	head
 		meta(charset='utf-8')
 		meta(http-equiv='X-UA-Compatible' content='IE=edge')
-		title Verkoper
+		title Update gegevens verkoper
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 		meta(name="description" content="Free HTML5 Website Template by FreeHTML5.co")
 		meta("keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive")
@@ -52,24 +52,26 @@ html.no-js
 						li
 							a(href='/') Home
 						li
-							a.active(href='/search') Zoek verkoper
+							a(href='/search') Zoek verkoper
 						li
 							a(href='/about') Over ons
 						li
 							a(href='/contact') Contact
+						li
+							a.active(href='/administratie') Administratie
  
 	div#fh5co-about-section
 		div.container
 			div.row
 				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
-					each thing in profile
+					each thing in update
 						h2 #{thing.name}
 						p
 							span #{thing.location}
 			div.row
 				div.col-md-8
 					div.row
-						each thing in profile
+						each thing in update
 							div.col-md-12
 								div.about-inner
 									img.img-reponsive(src='images/image_about.jpg' alt='About')
@@ -92,7 +94,7 @@ html.no-js
 											div.form-group
 												input.form-control(name='amount' placeholder='€2')
 										div.col-md-12
-											each thing in profile
+											each thing in update
 												div.form-group
 													input#salesmanID.form-control(name='salesmanID' value= thing.id type='hidden')
 										div.col-md-12
