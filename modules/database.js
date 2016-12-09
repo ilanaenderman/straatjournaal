@@ -47,6 +47,18 @@ db.conn.sync({force: true}).then( database => {
 		age: 26,
 		location: 'Voorschoten'
 	})
+	db.salesman.create({
+		name: 'Elia Enderman',
+		bio: 'blaaa blaabla bla blaaaaaa bla bla bllaaaa blaa',
+		age: 26,
+		location: 'Voorschoten'
+	})
+	db.salesman.create({
+		name: 'John Doe',
+		bio: 'blaaa blaabla bla blaaaaaa bla bla bllaaaa blaa',
+		age: 26,
+		location: 'Voorschoten'
+	})
 })
 
 // Export
