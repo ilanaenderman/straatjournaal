@@ -22,6 +22,7 @@ $(document).ready(function() {
 	})
 })
 
+// AJAX!! Create new salesman profile
 $(document).ready( function () {
 	$('#button3').click( function () {
 		event.preventDefault()
@@ -38,3 +39,4 @@ $(document).ready( function () {
 		})
 	})
 })
+

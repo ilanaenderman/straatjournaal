@@ -66,33 +66,33 @@ html.no-js
 				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
 					h2 Pas gegevens aan
 			div.row
-				form(action='/updateAdmin' method='post')
-					div.col-md-6
-						each thing in update
+				form(action='/update' method='post')
+					each thing in update
+						div.col-md-6
 							div.row
 								div.col-md-12
 									div.form-group
-										input#name.form-control(name='name' placeholder= thing.name type='text'
-										required) 
+										input.form-control(name='name' placeholder= thing.name type='text') 
 								div.col-md-12
 									div.form-group
-										input#age.form-control(name='age' placeholder= thing.age type='text' required)
+										input.form-control(name='age' placeholder= thing.age type='text')
 								div.col-md-12
 									div.form-group
-										input#location.form-control(name='location' placeholder= thing.location type='text'
-										required)
-					div.col-md-6
-						each thing in update
+										input.form-control(name='location' placeholder= thing.location type='text')
+						div.col-md-6
 							div.row
 								div.col-md-12
 									div.form-group
-										textarea#bio.form-control(name='bio' placeholder= thing.bio cols='30' rows='4' required)
+										textarea.form-control(name='bio' placeholder= thing.bio cols='30' rows='4')
+								div.col-md-12
+									div.form-group
+										input#salesmanID.form-control(name='salesmanID' value= thing.id type= 'hidden')
 								div.col-md-12
 									div.form-group
 										input#photo.form-control(name='photo' placeholder='Upload foto' type='file')
-					div.col-md-12
-						div.form-group.center-align
-							input#button3.btn.btn-primary(value='Verander' type='submit')
+						div.col-md-12
+							div.form-group.center-align
+								input#button4.btn.btn-primary(value='Verander gegevens' type='submit')
 			h4= message
 	div#fh5co-intro-section.fh5co-grey-bg-section
 		div.container
@@ -117,7 +117,6 @@ html.no-js
 						a(href='/') Home
 					li
 						a(href='/search') Zoek verkoper
-				ul.float
 					li
 						a(href='/contact') Contact
 					li

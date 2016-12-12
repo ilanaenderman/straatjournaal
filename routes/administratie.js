@@ -19,10 +19,6 @@ router.post('/administratie', (request, response) => {
 	})
 })
 
-// router.get('/updateAdmin', (request, response) => {
-
-// })
-
 router.post('/updateAdmin', (request, response) => {
 	let name 	= request.body.name
 	let age		= request.body.age
@@ -42,6 +38,32 @@ router.post('/updateAdmin', (request, response) => {
 				response.render('administratie', {salesman: salesman, message: "Nieuw profiel toegevoegd."})
 			})
 	})
+})
+
+router.post('/update', (request, response) => {
+	let filter 		= {}
+	let attributes 	= ['id']
+	let ID 			= request.body.salesmanID
+
+	if(request.body.name) (filter.name = request.body.name) && (attributes.push('name'))
+	if(request.body.age) (filter.age = request.body.age) && (attributes.push('age'))
+	if(request.body.location) (filter.location = request.body.location) && (attributes.push('location'))
+	if(request.body.bio) (filter.bio = request.body.bio) && (attributes.push('bio'))
+	if(request.body.photo) (filter.photo = request.body.photo) && (attributes.push('photo'))
+
+	db.salesman.findOne({
+		where: {id: ID}, 
+		attributes: attributes
+	}).then( updateFilter => {
+		updateFilter.update(filter
+		).then( updateSalesman => {
+			db.salesman.findAll({
+				where: {id: ID}
+			}).then( update => {
+				response.render('updateAdmin', {update: update, message: 'Gegevens veranderd'})
+			})
+		})
+	})		
 })
 
 
