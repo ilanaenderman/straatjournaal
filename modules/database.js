@@ -28,6 +28,11 @@ db.sale = db.conn.define('sale', {
 	number: sequelize.INTEGER
 })
 
+db.admin = db.conn.define('sale', {
+	email: sequelize.STRING,
+	password: sequelize.STRING
+})
+
 
 // Define relationships
 db.salesman.hasMany(db.sale)
@@ -59,6 +64,8 @@ db.conn.sync({force: true}).then( database => {
 		age: 26,
 		location: 'Voorschoten'
 	})
+	
+	
 })
 
 // Export
