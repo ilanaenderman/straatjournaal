@@ -22,9 +22,30 @@ router.post('/search', (request, response) => {
 
 // AJAX Response when payment is succesfull
 router.post('/profile', (request, response) => {
-	let number = request.body.number
-	let saleAmount = 0.9 * number
-	let salesmanId = request.body.salesmanID
+	let number 		= request.body.number
+	let saleAmount 	= 0.9 * number
+	let salesmanId 	= request.body.salesmanID
+	let amount 		= 2.29 * number
+	console.log(amount)
+
+	let payment = {
+		amount: amount,
+		description: "Straatjournaal"
+		redirectUrl: redirectUrl,
+		method: 'ideal'
+	}
+
+
+
+	mollie.payments.create(payment, payment => {
+		if(payment.isPaid()) {
+			console.log(error) {
+				response.render('profile', {message: payment.error})
+			} else {
+				console.log(payment)
+			}
+		}
+	})
 
 	//Create new Sale
 	db.sale.create({

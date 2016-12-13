@@ -7,6 +7,7 @@ const pg 		 = require('pg')
 const session 	 = require('express-session')
 const bcrypt 	 = require('bcrypt-node')
 const sass 		 = require('node-sass')
+const Mollie	 = require('mollie-api-node')
 const app	 	 = express()
 
 
@@ -25,6 +26,11 @@ app.use(session({
 	resave: true,
 	saveUninitialized: false
 }))
+
+
+// Initializing Mollie Api and setting Api key
+let mollie = new Mollie.API.Client
+mollie.setApiKey("test_dHar4XY7LxsDOtmnkVtjNVWXLSlXsM")
 
 
 // Initialize Routes
