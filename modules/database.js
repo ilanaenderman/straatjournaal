@@ -64,8 +64,6 @@ db.conn.sync({force: true}).then( database => {
 		age: 26,
 		location: 'Voorschoten'
 	})
-	
-	
 })
 
 // Export
