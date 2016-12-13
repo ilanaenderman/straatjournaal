@@ -67,13 +67,15 @@ html.no-js
 					h2 Login Admin
 			div.row
 				div.col-md-6.col-md-offset-3
-					form
+					form(action='/login' method='post')
 						div.form-group
 							input.form-control(name='email' placeholder= "email" type='email' required) 
 						div.form-group
 							input.form-control(name='password' placeholder= "password" type='password' required)
 						div.form-group.center-align
 							input#button4.btn.btn-primary(value='Login' type='submit')
+						p
+						h4= message
 
 
 
