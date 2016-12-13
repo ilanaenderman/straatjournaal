@@ -1,6 +1,7 @@
 // Login
 const express 	= require( 'express')
 const bcrypt 	= require('bcrypt-node')
+const session 	= require('express-session')
 const router	= express.Router( )
 const db		= require(__dirname + '/../modules/database')
 

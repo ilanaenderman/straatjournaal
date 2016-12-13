@@ -1,14 +1,19 @@
 // Administratie Route
 const express 	= require( 'express')
+const session 	= require('express-session')
 const router	= express.Router( )
 const db		= require(__dirname + '/../modules/database')
 
 // GET
 
 router.get('/administratie', (request, response) => {
-	db.salesman.findAll().then( salesman => {
-		response.render('administratie', {salesman: salesman, message: request.query.message})
-	})
+	db.user.findOne({
+		where: {id: db.user.id}
+	}).then( admin => {
+		db.salesman.findAll().then( salesman => {
+			response.render('administratie', {salesman: salesman, message: request.query.message})
+		})
+	})	
 })
 
 router.post('/administratie', (request, response) => {

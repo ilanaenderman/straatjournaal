@@ -1,5 +1,6 @@
 // Home Route
 const express 	= require( 'express')
+const session 	= require('express-session')
 const router	= express.Router( )
 const db		= require(__dirname + '/../modules/database')
 
@@ -26,7 +27,7 @@ router.get('/', (request, response) => {
 					console.log(idOne)
 					console.log(idTwo)
 					console.log(idThree)
-					response.render('home', {idOne: idOne, idTwo: idTwo, idThree: idThree})
+					response.render('home', {idOne: idOne, idTwo: idTwo, idThree: idThree, admin: request.session.user})
 				})
 			})
 		})

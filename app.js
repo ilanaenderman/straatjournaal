@@ -34,13 +34,15 @@ let contactRoute = require(__dirname + '/routes/contact')
 let aboutRoute 	 = require(__dirname + '/routes/about')
 let adminRoute 	 = require(__dirname + '/routes/administratie')
 let loginRoute 	 = require(__dirname + '/routes/login')
+let logoutRoute	 = require(__dirname + '/routes/logout')
 
-app.use( homeRoute)
-app.use( searchRoute)
-app.use( contactRoute)
-app.use( aboutRoute)
-app.use( adminRoute)
-app.use( loginRoute)
+app.use(homeRoute)
+app.use(searchRoute)
+app.use(contactRoute)
+app.use(aboutRoute)
+app.use(adminRoute)
+app.use(loginRoute)
+app.use(logoutRoute)
 
 
 // Listen port 8000

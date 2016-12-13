@@ -57,6 +57,11 @@ html.no-js
 							a.active(href='/about') Over ons
 						li
 							a(href='/contact') Contact
+						- if(admin === undefined)
+							li
+						- else
+							li
+								a(href='/logout') log uit
 
 	div#fh5co-intro-section
 		div.container
