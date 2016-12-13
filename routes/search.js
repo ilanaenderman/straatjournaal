@@ -20,6 +20,14 @@ router.post('/search', (request, response) => {
 	})
 })
 
+
+// AJAX when search field is blank
+router.post('/searchTotal', (request, response) => {
+	db.salesman.findAll().then( salesman => {
+		response.render('searach', {salesman: salesman, admin: request.session.user})
+	})
+})
+
 // AJAX Response when payment is succesfull
 router.post('/profile', (request, response) => {
 	let number 		= request.body.number
@@ -28,24 +36,24 @@ router.post('/profile', (request, response) => {
 	let amount 		= 2.29 * number
 	console.log(amount)
 
-	let payment = {
-		amount: amount,
-		description: "Straatjournaal"
-		redirectUrl: redirectUrl,
-		method: 'ideal'
-	}
+	// let payment = {
+	// 	amount: amount,
+	// 	description: "Straatjournaal"
+	// 	redirectUrl: redirectUrl,
+	// 	method: 'ideal'
+	// }
 
 
 
-	mollie.payments.create(payment, payment => {
-		if(payment.isPaid()) {
-			console.log(error) {
-				response.render('profile', {message: payment.error})
-			} else {
-				console.log(payment)
-			}
-		}
-	})
+	// mollie.payments.create(payment, payment => {
+	// 	if(payment.isPaid()) {
+	// 		console.log(error) {
+	// 			response.render('profile', {message: payment.error})
+	// 		} else {
+	// 			console.log(payment)
+	// 		}
+	// 	}
+	// })
 
 	//Create new Sale
 	db.sale.create({
