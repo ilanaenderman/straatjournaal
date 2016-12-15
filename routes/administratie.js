@@ -46,9 +46,9 @@ router.post('/updateAdmin', (request, response) => {
 })
 
 router.post('/update', (request, response) => {
-	let filter 		= {}
-	let attributes 	= ['id']
-	let ID 			= request.body.salesmanID
+	let filter 	   = {}
+	let attributes = ['id']
+	let ID 		   = request.body.salesmanID
 
 	if(request.body.name) (filter.name = request.body.name) && (attributes.push('name'))
 	if(request.body.age) (filter.age = request.body.age) && (attributes.push('age'))
@@ -69,6 +69,20 @@ router.post('/update', (request, response) => {
 			})
 		})
 	})		
+})
+
+router.post('/delete', (request, response) => {
+	let ID = request.body.id
+
+	db.salesman.findOne({
+		where: {id: ID}
+	}).then( deleteProfile => {
+		db.salesman.destroy({
+			where: {id: ID}
+		}).then( deleteProfile => {
+			response.redirect('/administratie?message=' + encodeURIComponent('Profiel is verwijderd.'))
+		})
+	})
 })
 
 

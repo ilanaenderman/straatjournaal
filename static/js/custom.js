@@ -1,4 +1,4 @@
-// Send id salesman to open profile page on button click
+// Function on Search page. Send id salesman to open profile page on button click
 $(document).ready( function () {
 	$('#button').click( function () {
 		var ID =  { 
@@ -8,7 +8,7 @@ $(document).ready( function () {
 	})
 })
 
-// AJAX!! Send id salesman when customer buys a newspaper
+// Function on profile page. AJAX!! Send id salesman when customer buys a newspaper
 $(document).ready(function() {
     $('#button2').submit(function(event) {
 		event.preventDefault()
@@ -22,9 +22,9 @@ $(document).ready(function() {
 	})
 })
 
-// AJAX!! Create new salesman profile
+// Function on administratie page. AJAX!! Create new salesman profile
 $(document).ready( function () {
-	$('#button3').click( function () {
+	$('#button3').click( function (event) {
 		event.preventDefault()
 		var ID =  { 
 			input: 		$("#button3").val(),
@@ -40,47 +40,3 @@ $(document).ready( function () {
 	})
 })
 
-
-// AJAX! Search
-// $(document).ready( function () {
-// 	$("#search").keyup( () => {
-// 		if( timer() ){
-
-// 		var letter = { 
-// 			input: $("#search").val()
-// 		}
-// 		if( $('#search').val() == "" ){
-// 			$.post("/searchTotal", letter, (response) => {
-// 			$("#message").append(response.salesman)
-// 			})
-// 		}
-// 		else {
-// 			$.post("/searchAutocomplete", letter, (response) => {
-// 				$('#result').html("")
-// 				for( var i = 0; i < response.data.length; i++) {
-// 					$("#result").append(response.data[i].firstName + " " + response.data[i].lastName + ": " + response.data[i].email + "<br>")
-// 				}
-// 			})
-// 		}
-// 	} else {console.log("false")}
-// 	})
-// })
-
-
-// //bandwidth optimalization
-// var oldTime = 0
-// function timer() {
-// 	var newTime = Date.now()
-// 	var interval= newTime - oldTime
-// 	if(interval > 300){
-// 		oldTime = newTime
-// 		console.log("true")
-// 		return true
-// 	} 
-// 	else {
-// 		oldTime = newTime
-// 		console.log("false")
-// 		return false
-
-// 	}
-// }

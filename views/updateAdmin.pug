@@ -92,10 +92,22 @@ html.no-js
 								div.col-md-12
 									div.form-group
 										input#photo.form-control(name='photo' placeholder='Upload foto' type='file')
-						div.col-md-12
-							div.form-group.center-align
+						div.col-md-6
+							div.form-group
 								input#button4.btn.btn-primary(value='Verander gegevens' type='submit')
+
+				form(action='/delete' method='post' autocomplete='off')
+					each thing in update
+						div.col-md-6
+							div.form-group
+								input.form-control(name='id' value= thing.id type='hidden')
+						div.col-md-6
+							div.form-group
+								input.btn.btn-primary(value='Verwijder profiel' type='submit')
 			h4= message
+			
+
+			
 	div#fh5co-intro-section.fh5co-grey-bg-section
 		div.container
 			div.row
