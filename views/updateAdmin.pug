@@ -41,136 +41,136 @@ html.no-js
 		script(src="js/modernizr-2.6.2.min.js")
 
 	body
-	div#fh5co-page
-	header#fh5co-header(role="banner")
-		div.container
-			div.header-inner
-				h1
-					a(href='/') Straatjournaal
-				nav(role='navigation')
-					ul
-						li
-							a(href='/') Home
-						li
-							a(href='/search') Zoek verkoper
-						li
-							a(href='/about') Over ons
-						li
-							a(href='/contact') Contact
-						li
-							a.active(href='/administratie') Administratie
-						li
-							a(href='/logout') Log uit
- 
-	div#fh5co-intro-section
-		div.container
-			each thing in update
-				div.row
-					div.col-md-6.col-md-offset-3.text-center.fh5co-heading
-						h2 Pas gegevens aan
-						h4#message= message
-				div.row
-					form(action='/update' method='post' autocomplete='off')
-						div.col-md-6
-							div.row
+		div#fh5co-page
+			header#fh5co-header(role="banner")
+				div.container
+					div.header-inner
+						h1
+							a(href='/') Straatjournaal
+						nav(role='navigation')
+							ul
+								li
+									a(href='/') Home
+								li
+									a(href='/search') Zoek verkoper
+								li
+									a(href='/about') Over ons
+								li
+									a(href='/contact') Contact
+								li
+									a.active(href='/administratie') Administratie
+								li
+									a(href='/logout') Log uit
+		 
+			div#fh5co-intro-section
+				div.container
+					each thing in update
+						div.row
+							div.col-md-6.col-md-offset-3.text-center.fh5co-heading
+								h2 Pas gegevens aan
+								h4#message= message
+						div.row
+							form(action='/update' method='post' autocomplete='off')
+								div.col-md-6
+									div.row
+										div.col-md-12
+											div.form-group
+												input.form-control(name='name' placeholder= thing.name type='text') 
+										div.col-md-12
+											div.form-group
+												input.form-control(name='age' placeholder= thing.age type='text')
+										div.col-md-12
+											div.form-group
+												input.form-control(name='location' placeholder= thing.location type='text')
+								div.col-md-6
+									div.row
+										div.col-md-12
+											div.form-group
+												textarea.form-control(name='bio' placeholder= thing.bio cols='30' rows='4')
+										input#salesmanID.form-control(name='salesmanID' value= thing.id type= 'hidden')
+										div.col-md-12
+											div.form-group
+												input#photo.form-control(name='photo' placeholder='Upload foto' type='file')
 								div.col-md-12
 									div.form-group
-										input.form-control(name='name' placeholder= thing.name type='text') 
-								div.col-md-12
-									div.form-group
-										input.form-control(name='age' placeholder= thing.age type='text')
-								div.col-md-12
-									div.form-group
-										input.form-control(name='location' placeholder= thing.location type='text')
-						div.col-md-6
-							div.row
-								div.col-md-12
-									div.form-group
-										textarea.form-control(name='bio' placeholder= thing.bio cols='30' rows='4')
-								input#salesmanID.form-control(name='salesmanID' value= thing.id type= 'hidden')
-								div.col-md-12
-									div.form-group
-										input#photo.form-control(name='photo' placeholder='Upload foto' type='file')
-						div.col-md-12
-							div.form-group
-								input#button4.btn.btn-primary(value='Verander gegevens' type='submit')
-			
-
-			
-	div#fh5co-intro-section.fh5co-grey-bg-section
-		each thing in update
-			div.container
-				div.row
-					div.col-md-8.col-md-offset-2.text-center
-						h2 Verkoop overzicht
-						h4#message= message2
-				div.row
-					div.col-md-6.col-md-offset-3
-						p Aantal kranten: #{thing.saleAmount}
-						p Inkomsten: € #{thing.income}
-					div.col-md-6.col-md-offset-3
-						form(action='/paid' method='post' autocomplete='off')
-							div.form-group
-								input.form-control(name='id' value= thing.id type='hidden')
-							div.col-md-12.text-center
-								div.form-group
-									input.btn.btn-primary(value='Uitbetaald' type='submit')
+										input#button4.btn.btn-primary(value='Verander gegevens' type='submit')
 					
 
-	
-	div#fh5co-intro-section
-		div.container
-			div.row
-				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
-					h2 Verwijder profiel
-			div.row.text-center
-				form(action='/delete' method='post' autocomplete='off')
-					each thing in update
-						div.col-md-6
-							div.form-group
-								input.form-control(name='id' value= thing.id type='hidden')
-						div.col-md-12
-							div.form-group
-								input.btn.btn-primary(value='Verwijder Profiel' type='submit')
-						
+					
+			div#fh5co-intro-section.fh5co-grey-bg-section
+				each thing in update
+					div.container
+						div.row
+							div.col-md-8.col-md-offset-2.text-center
+								h2 Verkoop overzicht
+								h4#message= message2
+						div.row
+							div.col-md-6.col-md-offset-3
+								p Aantal kranten: #{thing.saleAmount}
+								p Inkomsten: € #{thing.income}
+							div.col-md-6.col-md-offset-3
+								form(action='/paid' method='post' autocomplete='off')
+									div.form-group
+										input.form-control(name='id' value= thing.id type='hidden')
+									div.col-md-12.text-center
+										div.form-group
+											input.btn.btn-primary(value='Uitbetaald' type='submit')
+							
 
 			
-				
+			div#fh5co-intro-section
+				div.container
+					div.row
+						div.col-md-6.col-md-offset-3.text-center.fh5co-heading
+							h2 Verwijder profiel
+					div.row.text-center
+						form(action='/delete' method='post' autocomplete='off')
+							each thing in update
+								div.col-md-6
+									div.form-group
+										input.form-control(name='id' value= thing.id type='hidden')
+								div.col-md-12
+									div.form-group
+										input.btn.btn-primary(value='Verwijder Profiel' type='submit')
+								
 
-	footer#fh5co-footer(role='contentinfo')
-		div.container
-			div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Over ons
-				p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
+					
+						
 
-			div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Menu
-				ul.float
-					li
-						a(href='/') Home
-					li
-						a(href='/search') Zoek verkoper
-					li
-						a(href='/contact') Contact
-					li
-						a(href='/about') Over ons
+			footer#fh5co-footer(role='contentinfo')
+				div.container
+					div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Over ons
+						p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
 
-			div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Volg ons op:
-				ul.fh5co-social
-					li
-						a(href='https://twitter.com/straatjournaal')
-							i.icon-twitter &nbsp;Twitter
-					li
-						a(href='#')
-							i.icon-facebook &nbsp;Facebook
-					li
-						a(href='#')
-							i.icon-instagram &nbsp;Instagram
+					div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Menu
+						ul.float
+							li
+								a(href='/') Home
+							li
+								a(href='/search') Zoek verkoper
+							li
+								a(href='/contact') Contact
+							li
+								a(href='/about') Over ons
 
-			div.col-md-12.fh5co-copyright.text-center 
-				p &copy; 2016 Straatjournaal App. All Rights Reserved
-					span Created by Ilana Enderman
+					div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Volg ons op:
+						ul.fh5co-social
+							li
+								a(href='https://twitter.com/straatjournaal')
+									i.icon-twitter &nbsp;Twitter
+							li
+								a(href='#')
+									i.icon-facebook &nbsp;Facebook
+							li
+								a(href='#')
+									i.icon-instagram &nbsp;Instagram
+
+					div.col-md-12.fh5co-copyright.text-center 
+						p &copy; 2016 Straatjournaal App. All Rights Reserved
+							span Created by Ilana Enderman
 
 	//- jQuery
 	script(src='js/jquery.min.js')

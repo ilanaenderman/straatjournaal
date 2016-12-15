@@ -41,113 +41,113 @@ html.no-js
 		script(src="js/modernizr-2.6.2.min.js")
 
 	body
-	div#fh5co-page
-	header#fh5co-header(role="banner")
-		div.container
-			div.header-inner
-				h1
-					a(href='/') Straatjournaal
-				nav(role='navigation')
-					ul
-						li
-							a(href='/') Home
-						li
-							a.active(href='/search') Zoek verkoper
-						li
-							a(href='/about') Over ons
-						li
-							a(href='/contact') Contact
-						- if(admin === undefined)
-							li
-						- else
-							li
-								a(href='/administratie') Administratie
-						- if(admin === undefined)
-							li
-						- else
-							li
-								a(href='/logout') Log uit
- 
-	div#fh5co-about-section
-		div.container
-			div.row
-				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
-					each thing in profile
-						h2 #{thing.name}
-						p
-							span #{thing.location}
-			div.row
-				div.col-md-8
+		div#fh5co-page
+			header#fh5co-header(role="banner")
+				div.container
+					div.header-inner
+						h1
+							a(href='/') Straatjournaal
+						nav(role='navigation')
+							ul
+								li
+									a(href='/') Home
+								li
+									a.active(href='/search') Zoek verkoper
+								li
+									a(href='/about') Over ons
+								li
+									a(href='/contact') Contact
+								- if(admin === undefined)
+									li
+								- else
+									li
+										a(href='/administratie') Administratie
+								- if(admin === undefined)
+									li
+								- else
+									li
+										a(href='/logout') Log uit
+		 
+			div#fh5co-about-section
+				div.container
 					div.row
-						each thing in profile
-							div.col-md-12
-								div.about-inner
-									img.img-reponsive(src='images/image_about.jpg' alt='About')
-									h3 Biografie
-									p #{thing.bio}
-									blockquote
-										p Hier komt een quote van de verkoper.
-				div.col-md-4
-					aside.sidebar
-						div.row
-							div.col-md-12.side
-								h3 Koop een krant
-							div.col-md-12.side
-								form(method='post' action='/profile' autocomplete='off')
-									div.row
-										div.col-md-5
-											div.form-group
-												input#number.form-control(name='number' placeholder='Aantal' type='text' required)
-										div.col-md-7
-											div.form-group
-												input.form-control(name='amount' placeholder='€2')
-										div.col-md-12
-											each thing in profile
-												div.form-group
-													input#salesmanID.form-control(name='salesmanID' value= thing.id type='hidden')
-										div.col-md-12
-											div.form-group
-												input#button2.btn.btn-primary(value='Koop' type='submit')
-								h4#message= message
+						div.col-md-6.col-md-offset-3.text-center.fh5co-heading
+							each thing in profile
+								h2 #{thing.name}
+								p
+									span #{thing.location}
+					div.row
+						div.col-md-8
+							div.row
+								each thing in profile
+									div.col-md-12
+										div.about-inner
+											img.img-reponsive(src='images/image_about.jpg' alt='About')
+											h3 Biografie
+											p #{thing.bio}
+											blockquote
+												p Hier komt een quote van de verkoper.
+						div.col-md-4
+							aside.sidebar
+								div.row
+									div.col-md-12.side
+										h3 Koop een krant
+									div.col-md-12.side
+										form(method='post' action='/profile' autocomplete='off')
+											div.row
+												div.col-md-5
+													div.form-group
+														input#number.form-control(name='number' placeholder='Aantal' type='text' required)
+												div.col-md-7
+													div.form-group
+														input.form-control(name='amount' placeholder='€2')
+												div.col-md-12
+													each thing in profile
+														div.form-group
+															input#salesmanID.form-control(name='salesmanID' value= thing.id type='hidden')
+												div.col-md-12
+													div.form-group
+														input#button2.btn.btn-primary(value='Koop' type='submit')
+										h4#message= message
 
-			
-				
+					
+						
 
-	footer#fh5co-footer(role='contentinfo')
-		div.container
-			div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Over ons
-				p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
+			footer#fh5co-footer(role='contentinfo')
+				div.container
+					div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Over ons
+						p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
 
-			div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Menu
-				ul.float
-					li
-						a(href='/') Home
-					li
-						a(href='/search') Zoek verkoper
-				ul.float
-					li
-						a(href='/contact') Contact
-					li
-						a(href='/about') Over ons
+					div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Menu
+						ul.float
+							li
+								a(href='/') Home
+							li
+								a(href='/search') Zoek verkoper
+						ul.float
+							li
+								a(href='/contact') Contact
+							li
+								a(href='/about') Over ons
 
-			div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Volg ons op:
-				ul.fh5co-social
-					li
-						a(href='https://twitter.com/straatjournaal')
-							i.icon-twitter &nbsp;Twitter
-					li
-						a(href='#')
-							i.icon-facebook &nbsp;Facebook
-					li
-						a(href='#')
-							i.icon-instagram &nbsp;Instagram
+					div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Volg ons op:
+						ul.fh5co-social
+							li
+								a(href='https://twitter.com/straatjournaal')
+									i.icon-twitter &nbsp;Twitter
+							li
+								a(href='#')
+									i.icon-facebook &nbsp;Facebook
+							li
+								a(href='#')
+									i.icon-instagram &nbsp;Instagram
 
-			div.col-md-12.fh5co-copyright.text-center 
-				p &copy; 2016 Straatjournaal App. All Rights Reserved
-					span Created by Ilana Enderman
+					div.col-md-12.fh5co-copyright.text-center 
+						p &copy; 2016 Straatjournaal App. All Rights Reserved
+							span Created by Ilana Enderman
 
 	//- jQuery
 	script(src='js/jquery.min.js')

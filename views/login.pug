@@ -41,80 +41,80 @@ html.no-js
 		script(src="js/modernizr-2.6.2.min.js")
 
 	body
-	div#fh5co-page
-	header#fh5co-header(role="banner")
-		div.container
-			div.header-inner
-				h1
-					a(href='/') Straatjournaal
-				nav(role='navigation')
-					ul
-						li
-							a(href='/') Home
-						li
-							a(href='/search') Zoek verkoper
-						li
-							a(href='/about') Over ons
-						li
-							a(href='/contact') Contact
-						li
-							a.active(href='/admin') Login
+		div#fh5co-page
+			header#fh5co-header(role="banner")
+				div.container
+					div.header-inner
+						h1
+							a(href='/') Straatjournaal
+						nav(role='navigation')
+							ul
+								li
+									a(href='/') Home
+								li
+									a(href='/search') Zoek verkoper
+								li
+									a(href='/about') Over ons
+								li
+									a(href='/contact') Contact
+								li
+									a.active(href='/admin') Login
 
-	div#fh5co-intro-section
-		div.container
-			div.row
-				div.col-md-8.col-md-offset-2.text-center
-					h2 Login Admin
-			div.row
-				div.col-md-6.col-md-offset-3
-					form(action='/login' method='post' autocomplete='off')
-						div.form-group
-							input.form-control(name='email' placeholder= "email" type='email' required) 
-						div.form-group
-							input.form-control(name='password' placeholder= "password" type='password' required)
-						div.form-group.center-align
-							input#button4.btn.btn-primary(value='Login' type='submit')
-						p
-						h4= message
+			div#fh5co-intro-section
+				div.container
+					div.row
+						div.col-md-8.col-md-offset-2.text-center
+							h2 Login Admin
+					div.row
+						div.col-md-6.col-md-offset-3
+							form(action='/login' method='post' autocomplete='off')
+								div.form-group
+									input.form-control(name='email' placeholder= "email" type='email' required) 
+								div.form-group
+									input.form-control(name='password' placeholder= "password" type='password' required)
+								div.form-group.center-align
+									input#button4.btn.btn-primary(value='Login' type='submit')
+								p
+								h4= message
 
 
 
-	
+			
 
-	footer#fh5co-footer(role='contentinfo')
-		div.container
-			div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Over ons
-				p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
+			footer#fh5co-footer(role='contentinfo')
+				div.container
+					div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Over ons
+						p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
 
-			div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Navbar
-				ul.float
-					li
-						a(href='/') Home
-					li
-						a(href='/search') Zoek verkoper
-					li
-						a(href='/contact') Contact
-					li
-						a(href='/about') Over ons
+					div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Navbar
+						ul.float
+							li
+								a(href='/') Home
+							li
+								a(href='/search') Zoek verkoper
+							li
+								a(href='/contact') Contact
+							li
+								a(href='/about') Over ons
 
-			div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Follow us
-				ul.fh5co-social
-					li
-						a(href='https://twitter.com/straatjournaal')
-							i.icon-twitter &nbsp;Twitter
-					li
-						a(href='#')
-							i.icon-facebook &nbsp;Facebook
-					li
-						a(href='#')
-							i.icon-instagram &nbsp;Instagram
+					div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Follow us
+						ul.fh5co-social
+							li
+								a(href='https://twitter.com/straatjournaal')
+									i.icon-twitter &nbsp;Twitter
+							li
+								a(href='#')
+									i.icon-facebook &nbsp;Facebook
+							li
+								a(href='#')
+									i.icon-instagram &nbsp;Instagram
 
-			div.col-md-12.fh5co-copyright.text-center 
-				p &copy; 2016 Straatjournaal App. All Rights Reserved
-					span Created by Ilana Enderman
+					div.col-md-12.fh5co-copyright.text-center 
+						p &copy; 2016 Straatjournaal App. All Rights Reserved
+							span Created by Ilana Enderman
 
 	//- jQuery
 	script(src='js/jquery.min.js')

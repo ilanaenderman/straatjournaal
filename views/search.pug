@@ -41,98 +41,98 @@ html.no-js
 		script(src="js/modernizr-2.6.2.min.js")
 
 	body
-	div#fh5co-page
-	header#fh5co-header(role="banner")
-		div.container
-			div.header-inner
-				h1
-					a(href='/') Straatjournaal
-				nav(role='navigation')
-					ul
-						li
-							a(href='/') Home
-						li
-							a.active(href='/search') Zoek verkoper
-						li
-							a(href='/about') Over ons
-						li
-							a(href='/contact') Contact
-						- if(admin === undefined)
+		div#fh5co-page
+			header#fh5co-header(role="banner")
+				div.container
+					div.header-inner
+						h1
+							a(href='/') Straatjournaal
+						nav(role='navigation')
+							ul
+								li
+									a(href='/') Home
+								li
+									a.active(href='/search') Zoek verkoper
+								li
+									a(href='/about') Over ons
+								li
+									a(href='/contact') Contact
+								- if(admin === undefined)
+									li
+								- else
+									li
+										a(href='/administratie') Administratie
+								- if(admin === undefined)
+									li
+								- else
+									li
+										a(href='/logout') Log uit
+		 
+			div#fh5co-blog-section
+				div.container
+					div.row
+						div.col-md-6.col-md-offset-3.text-center.fh5co-heading
+							h2 Ontmoet onze verkopers
+							p Selecteer je lokale verkoper, lees hun verhaal en/of maak geld over om een krant te kopen.
+							div.form-group
+										input#search.form-control(placeholder= 'Naam' type='text')
+							div.form-group
+										input.btn.btn-primary(value='Zoek verkoper' type='submit')
+
+					div.row
+					- salesman.sort(function(a,b){
+						- var textA = a.name.toUpperCase()
+						- var textB = b.name.toUpperCase()
+						- return(textA < textB) ? -1 : (textA > textB) ? 1 : 0 
+					- })
+					each thing in salesman
+						div.col-md-4.text-center
+							div.blog-inner
+								a(href='#')
+									img.img-responsive(src= 'images/image_4.jpg' alt='Blog')
+								div.desc
+									h3
+										a(href='#') #{thing.name}
+									p Verkoopt het Straatjournaal in 
+									p #{thing.location}
+									p
+										form(method='post' action='/search')
+											button#button.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Lees meer
+
+			footer#fh5co-footer(role='contentinfo')
+				div.container
+					div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Over ons
+						p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
+
+					div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Menu
+						ul.float
 							li
-						- else
+								a(href='/') Home
 							li
-								a(href='/administratie') Administratie
-						- if(admin === undefined)
+								a(href='/search') Zoek verkoper
 							li
-						- else
+								a(href='/contact') Contact
 							li
-								a(href='/logout') Log uit
- 
-	div#fh5co-blog-section
-		div.container
-			div.row
-				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
-					h2 Ontmoet onze verkopers
-					p Selecteer je lokale verkoper, lees hun verhaal en/of maak geld over om een krant te kopen.
-					div.form-group
-								input#search.form-control(placeholder= 'Naam' type='text')
-					div.form-group
-								input.btn.btn-primary(value='Zoek verkoper' type='submit')
+								a(href='/about') Over ons
 
-			div.row
-			- salesman.sort(function(a,b){
-				- var textA = a.name.toUpperCase()
-				- var textB = b.name.toUpperCase()
-				- return(textA < textB) ? -1 : (textA > textB) ? 1 : 0 
-			- })
-			each thing in salesman
-				div.col-md-4.text-center
-					div.blog-inner
-						a(href='#')
-							img.img-responsive(src= 'images/image_4.jpg' alt='Blog')
-						div.desc
-							h3
-								a(href='#') #{thing.name}
-							p Verkoopt het Straatjournaal in 
-							p #{thing.location}
-							p
-								form(method='post' action='/search')
-									button#button.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Lees meer
+					div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Volg ons op:
+						ul.fh5co-social
+							li
+								a(href='https://twitter.com/straatjournaal')
+									i.icon-twitter &nbsp;Twitter
+							li
+								a(href='#')
+									i.icon-facebook &nbsp;Facebook
+							li
+								a(href='#')
+									i.icon-instagram &nbsp;Instagram
 
-	footer#fh5co-footer(role='contentinfo')
-		div.container
-			div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Over ons
-				p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
-
-			div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Menu
-				ul.float
-					li
-						a(href='/') Home
-					li
-						a(href='/search') Zoek verkoper
-					li
-						a(href='/contact') Contact
-					li
-						a(href='/about') Over ons
-
-			div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Volg ons op:
-				ul.fh5co-social
-					li
-						a(href='https://twitter.com/straatjournaal')
-							i.icon-twitter &nbsp;Twitter
-					li
-						a(href='#')
-							i.icon-facebook &nbsp;Facebook
-					li
-						a(href='#')
-							i.icon-instagram &nbsp;Instagram
-
-			div.col-md-12.fh5co-copyright.text-center 
-				p &copy; 2016 Straatjournaal App. All Rights Reserved
-					span Created by Ilana Enderman
+					div.col-md-12.fh5co-copyright.text-center 
+						p &copy; 2016 Straatjournaal App. All Rights Reserved
+							span Created by Ilana Enderman
 
 	//- jQuery
 	script(src='js/jquery.min.js')

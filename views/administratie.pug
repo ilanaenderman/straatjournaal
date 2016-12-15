@@ -41,127 +41,141 @@ html.no-js
 		script(src="js/modernizr-2.6.2.min.js")
 
 	body
-	div#fh5co-page
-	header#fh5co-header(role="banner")
-		div.container
-			div.header-inner
-				h1
-					a(href='/') Straatjournaal
-				nav(role='navigation')
-					ul
-						li
-							a(href='/') Home
-						li
-							a(href='/search') Zoek verkoper
-						li
-							a(href='/about') Over ons
-						li
-							a(href='/contact') Contact
-						li
-							a.active(href='/administratie') Administratie
-						li
-							a(href='/logout') Log uit
+		div#fh5co-page
+			header#fh5co-header(role="banner")
+				div.container
+					div.header-inner
+						h1
+							a(href='/') Straatjournaal
+						nav(role='navigation')
+							ul
+								li
+									a(href='/') Home
+								li
+									a(href='/search') Zoek verkoper
+								li
+									a(href='/about') Over ons
+								li
+									a(href='/contact') Contact
+								li
+									a.active(href='/administratie') Administratie
+								li
+									a(href='/logout') Log uit
 
-	div#fh5co-intro-section
-		div.container
-			div.row
-				div.col-md-8.col-md-offset-2.text-center
-					h2 Administratie
-					p Hier kan je een nieuw profiel aanmaken en het overzicht zien van alle verkopers.
-					h4#message= message
-	div#fh5co-intro-section.fh5co-grey-bg-section
-		div.container
-			div.row
-				div.col-md-8.col-md-offset-2.text-center
-					h2 Maak een nieuw profiel aan
-			div.row
-				form(action='/updateAdmin' method='post' autocomplete='off')
-					div.col-md-6
+			div#fh5co-intro-section
+				div.container
+					div.row
+						div.col-md-8.col-md-offset-2.text-center
+							h2 Administratie
+							p Hier kan je een nieuw profiel aanmaken en het overzicht zien van alle verkopers.
+							h4#message= message
+			div#fh5co-intro-section.fh5co-grey-bg-section
+				div.container
+					div.row
+						div.col-md-8.col-md-offset-2.text-center
+							h2 Maak een nieuw profiel aan
+					div.row
+						form(action='/updateAdmin' method='post' autocomplete='off')
+							div.col-md-6
+								div.row
+									div.col-md-12
+										div.form-group
+											input#name.form-control(name='name' placeholder='Naam' type='text'
+											required) 
+									div.col-md-12
+										div.form-group
+											input#age.form-control(name='age' placeholder='Leeftijd' type='text' required)
+									div.col-md-12
+										div.form-group
+											input#location.form-control(name='location' placeholder='Lokatie' type='text'
+											required)
+							div.col-md-6
+								div.row
+									div.col-md-12
+										div.form-group
+											textarea#bio.form-control(name='bio' placeholder='Bio' cols='30' rows='7' required)
+							div.col-md-12
+								div.form-group
+									input#button3.btn.btn-primary(value='Maak aan' type='submit')
 						div.row
-							div.col-md-12
-								div.form-group
-									input#name.form-control(name='name' placeholder='Naam' type='text'
-									required) 
-							div.col-md-12
-								div.form-group
-									input#age.form-control(name='age' placeholder='Leeftijd' type='text' required)
-							div.col-md-12
-								div.form-group
-									input#location.form-control(name='location' placeholder='Lokatie' type='text'
-									required)
-					div.col-md-6
+							div.col-md-8.col-md-offset-2.text-center
+								h2 Upload een profielfoto
 						div.row
-							div.col-md-12
-								div.form-group
-									textarea#bio.form-control(name='bio' placeholder='Bio' cols='30' rows='4' required)
-							div.col-md-12
-								div.form-group
-									input#photo.form-control(name='photo' placeholder='Upload foto' type='file')
-					div.col-md-12
-						div.form-group.center-align
-							input#button3.btn.btn-primary(value='Maak aan' type='submit')
-								
-	div#fh5co-intro-section
-		div.container
-			div.row
-				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
-					h2 Overzicht
-			div.row
-			- salesman.sort(function(a,b){
-				- var textA = a.name.toUpperCase()
-				- var textB = b.name.toUpperCase()
-				- return(textA < textB) ? -1 : (textA > textB) ? 1 : 0 
-			- })
-			each thing in salesman
-				div.col-md-4.text-center
-					div.blog-inner
-						a(href='#')
-							img.img-responsive(src= "images/image_4.jpg" alt='Blog')
-						div.desc
-							h3
-								a(href='#') #{thing.name}
-							h5 Leeftijd: #{thing.age}
-							h5 Lokatie: #{thing.location}
-							h5 Inkomsten: € #{thing.income}
-							h5 Aantal kranten verkocht:  #{thing.saleAmount}
-						div.desc
-							form(method='post' action='/administratie')
-								button#button3.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Update
+							div.col-md-6
+								form(action='/uploadPhoto' method='post' enctype='multipart/formdata' autocomplete='off')
+									div.col-md-12
+										div.form-group
+											label Kies Foto
+											input#photo.form-control(name='displayImage' placeholder='Upload foto' type='file')
+									div.col-md-12
+										div.form-group
+											input.btn.btn-primary(value='Zend' type='submit')
 
-	footer#fh5co-footer(role='contentinfo')
-		div.container
-			div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Over ons
-				p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
 
-			div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Menu
-				ul.float
-					li
-						a(href='/') Home
-					li
-						a(href='/search') Zoek verkoper
-					li
-						a(href='/contact') Contact
-					li
-						a(href='/about') Over ons
 
-			div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Volg ons op:
-				ul.fh5co-social
-					li
-						a(href='https://twitter.com/straatjournaal')
-							i.icon-twitter &nbsp;Twitter
-					li
-						a(href='#')
-							i.icon-facebook &nbsp;Facebook
-					li
-						a(href='#')
-							i.icon-instagram &nbsp;Instagram
 
-			div.col-md-12.fh5co-copyright.text-center 
-				p &copy; 2016 Straatjournaal App. All Rights Reserved
-					span Created by Ilana Enderman
+										
+			div#fh5co-intro-section
+				div.container
+					div.row
+						div.col-md-6.col-md-offset-3.text-center.fh5co-heading
+							h2 Overzicht
+					div.row
+					- salesman.sort(function(a,b){
+						- var textA = a.name.toUpperCase()
+						- var textB = b.name.toUpperCase()
+						- return(textA < textB) ? -1 : (textA > textB) ? 1 : 0 
+					- })
+					each thing in salesman
+						div.col-md-4.text-center
+							div.blog-inner
+								a(href='#')
+									img.img-responsive(src= "images/image_4.jpg" alt='Blog')
+								div.desc
+									h3
+										a(href='#') #{thing.name}
+									h5 Leeftijd: #{thing.age}
+									h5 Lokatie: #{thing.location}
+									h5 Inkomsten: € #{thing.income}
+									h5 Aantal kranten verkocht:  #{thing.saleAmount}
+								div.desc
+									form(method='post' action='/administratie')
+										button#button3.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Update
+
+			footer#fh5co-footer(role='contentinfo')
+				div.container
+					div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Over ons
+						p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
+
+					div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Menu
+						ul.float
+							li
+								a(href='/') Home
+							li
+								a(href='/search') Zoek verkoper
+							li
+								a(href='/contact') Contact
+							li
+								a(href='/about') Over ons
+
+					div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Volg ons op:
+						ul.fh5co-social
+							li
+								a(href='https://twitter.com/straatjournaal')
+									i.icon-twitter &nbsp;Twitter
+							li
+								a(href='#')
+									i.icon-facebook &nbsp;Facebook
+							li
+								a(href='#')
+									i.icon-instagram &nbsp;Instagram
+
+					div.col-md-12.fh5co-copyright.text-center 
+						p &copy; 2016 Straatjournaal App. All Rights Reserved
+							span Created by Ilana Enderman
 
 	//- jQuery
 	script(src='js/jquery.min.js')

@@ -3,10 +3,6 @@ const express 	= require( 'express')
 const session 	= require('express-session')
 const router	= express.Router( )
 const db		= require(__dirname + '/../modules/database')
-// const Multer	= require('multer')
-
-// const storage 	= 
-// const upload 	= multer({storage: storage}).single('photo')
 
 // GET
 
@@ -112,13 +108,5 @@ router.post('/paid', (request, response) => {
 		})
 	})
 })
-
-// router.post('/uploadPhoto', (request, response) => {
-// 	db.salesman.findAll({
-// 		where: {id: request.body.ID}
-// 	}).then( update => {
-// 		response.render('updateAdmin', {update: update})
-// 	})
-// })
 
 module.exports = router

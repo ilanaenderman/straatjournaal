@@ -41,108 +41,108 @@ html.no-js
 		script(src="js/modernizr-2.6.2.min.js")
 
 	body
-	div#fh5co-page
-	header#fh5co-header(role="banner")
-		div.container
-			div.header-inner
-				h1
-					a(href='/') Straatjournaal
-				nav(role='navigation')
-					ul
-						li
-							a(href='/') Home
-						li
-							a(href='/search') Zoek verkoper
-						li
-							a(href='/about') Over ons
-						li
-							a.active(href='/contact') Contact
-						- if(admin === undefined)
-							li
-						- else
-							li
-								a(href='/administratie') Administratie
-						- if(admin === undefined)
-							li
-						- else
-							li
-								a(href='/logout') Log uit
+		div#fh5co-page
+			header#fh5co-header(role="banner")
+				div.container
+					div.header-inner
+						h1
+							a(href='/') Straatjournaal
+						nav(role='navigation')
+							ul
+								li
+									a(href='/') Home
+								li
+									a(href='/search') Zoek verkoper
+								li
+									a(href='/about') Over ons
+								li
+									a.active(href='/contact') Contact
+								- if(admin === undefined)
+									li
+								- else
+									li
+										a(href='/administratie') Administratie
+								- if(admin === undefined)
+									li
+								- else
+									li
+										a(href='/logout') Log uit
 
-	div#fh5co-contact-section
-		div.container
-			div.row
-				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
-					h2 Contact
-					p
-						span Als u vragen heeft, neem gerust contact met ons op.
-			div.row
-				div.col-md-3
-					h3 Contact info.
-					ul.contact-info
-						li
-							i.sl-icon-map
-							p Nieuwe Groenmarkt 22 2011 TW Haarlem
-						li
-							i.sl-icon-phone
-							p 023 551 2500
-						li.contact-info
-							i.sl-icon-envelope-open
-							p straatjournaal.gmail.com
-						li
-							i.sl-icon-globe
-							a(href='straatjournaal.com') straatjournaal.com
-
-				div.col-md-8.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+			div#fh5co-contact-section
+				div.container
 					div.row
-						div.col-md-6
-							div.form-group
-								input.form-control(placeholder='Naam' type='text') 
-						div.col-md-6
-							div.form-group
-								input.form-control(placeholder='Email' type='email')
-						div.col-md-12
-							div.form-group
-								textarea.form-control(name='' placeholder='Bericht' id='' cols='30' rows='7')
-						div.col-md-12
-							div.form-group
-								input.btn.btn-primary(value='Send Message' type='submit')
+						div.col-md-6.col-md-offset-3.text-center.fh5co-heading
+							h2 Contact
+							p
+								span Als u vragen heeft, neem gerust contact met ons op.
+					div.row
+						div.col-md-3
+							h3 Contact info.
+							ul.contact-info
+								li
+									i.sl-icon-map
+									p Nieuwe Groenmarkt 22 2011 TW Haarlem
+								li
+									i.sl-icon-phone
+									p 023 551 2500
+								li.contact-info
+									i.sl-icon-envelope-open
+									p straatjournaal.gmail.com
+								li
+									i.sl-icon-globe
+									a(href='straatjournaal.com') straatjournaal.com
 
-	div#map(data-animate-effect='fadeIn')
+						div.col-md-8.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+							div.row
+								div.col-md-6
+									div.form-group
+										input.form-control(placeholder='Naam' type='text') 
+								div.col-md-6
+									div.form-group
+										input.form-control(placeholder='Email' type='email')
+								div.col-md-12
+									div.form-group
+										textarea.form-control(name='' placeholder='Bericht' id='' cols='30' rows='7')
+								div.col-md-12
+									div.form-group
+										input.btn.btn-primary(value='Send Message' type='submit')
 
-	footer#fh5co-footer(role='contentinfo')
-		div.container
-			div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Over ons
-				p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
+			div#map(data-animate-effect='fadeIn')
 
-			div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Menu
-				ul.float
-					li
-						a(href='/') Home
-					li
-						a(href='/search') Zoek verkoper
-					li
-						a(href='/contact') Contact
-					li
-						a(href='/about') Over ons
+			footer#fh5co-footer(role='contentinfo')
+				div.container
+					div.col-md-3.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Over ons
+						p Hier kunnen verkopers hun krant verkopen, ondanks het feit dat mensen steeds minder vaak contant geld op zak hebben. 
 
-			div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
-				h3 Volg ons op:
-				ul.fh5co-social
-					li
-						a(href='https://twitter.com/straatjournaal')
-							i.icon-twitter &nbsp;Twitter
-					li
-						a(href='#')
-							i.icon-facebook &nbsp;Facebook
-					li
-						a(href='#')
-							i.icon-instagram &nbsp;Instagram
+					div.col-md-6.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Menu
+						ul.float
+							li
+								a(href='/') Home
+							li
+								a(href='/search') Zoek verkoper
+							li
+								a(href='/contact') Contact
+							li
+								a(href='/about') Over ons
 
-			div.col-md-12.fh5co-copyright.text-center 
-				p &copy; 2016 Straatjournaal App. All Rights Reserved
-					span Created by Ilana Enderman
+					div.col-md-2.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
+						h3 Volg ons op:
+						ul.fh5co-social
+							li
+								a(href='https://twitter.com/straatjournaal')
+									i.icon-twitter &nbsp;Twitter
+							li
+								a(href='#')
+									i.icon-facebook &nbsp;Facebook
+							li
+								a(href='#')
+									i.icon-instagram &nbsp;Instagram
+
+					div.col-md-12.fh5co-copyright.text-center 
+						p &copy; 2016 Straatjournaal App. All Rights Reserved
+							span Created by Ilana Enderman
 
 	//- jQuery
 	script(src='/js/jquery.min.js')

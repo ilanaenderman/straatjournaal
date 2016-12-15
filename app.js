@@ -8,6 +8,7 @@ const session 	 = require('express-session')
 const bcrypt 	 = require('bcrypt-node')
 const sass 		 = require('node-sass')
 const Mollie	 = require('mollie-api-node')
+const Multer	 = require('multer')
 const app	 	 = express()
 
 
