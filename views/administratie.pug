@@ -60,7 +60,7 @@ html.no-js
 						li
 							a.active(href='/administratie') Administratie
 						li
-							a(href='/logout') log uit
+							a(href='/logout') Log uit
 
 	div#fh5co-intro-section
 		div.container
@@ -68,6 +68,7 @@ html.no-js
 				div.col-md-8.col-md-offset-2.text-center
 					h2 Administratie
 					p Hier kan je een nieuw profiel aanmaken en het overzicht zien van alle verkopers.
+					h4#message= message
 	div#fh5co-intro-section.fh5co-grey-bg-section
 		div.container
 			div.row
@@ -99,14 +100,18 @@ html.no-js
 					div.col-md-12
 						div.form-group.center-align
 							input#button3.btn.btn-primary(value='Maak aan' type='submit')
-			h4= message
-
+								
 	div#fh5co-intro-section
 		div.container
 			div.row
 				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
 					h2 Overzicht
 			div.row
+			- salesman.sort(function(a,b){
+				- var textA = a.name.toUpperCase()
+				- var textB = b.name.toUpperCase()
+				- return(textA < textB) ? -1 : (textA > textB) ? 1 : 0 
+			- })
 			each thing in salesman
 				div.col-md-4.text-center
 					div.blog-inner

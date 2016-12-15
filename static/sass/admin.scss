@@ -22,7 +22,9 @@ $brand-bg-color: $brand-white;
 $input-border-focus:  $brand-primary !default;
 $form-group-margin-bottom:       30px !default;
 
-
+#message {
+	color: $brand-primary;
+}
 
 // Mixin
 @mixin fh5co-translate($translatex) {

@@ -61,7 +61,12 @@ html.no-js
 							li
 						- else
 							li
-								a(href='/logout') log uit
+								a(href='/administratie') Administratie
+						- if(admin === undefined)
+							li
+						- else
+							li
+								a(href='/logout') Log uit
  
 	div#fh5co-about-section
 		div.container

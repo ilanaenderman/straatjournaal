@@ -21,12 +21,12 @@ router.post('/search', (request, response) => {
 })
 
 
-// AJAX when search field is blank
-router.post('/searchTotal', (request, response) => {
-	db.salesman.findAll().then( salesman => {
-		response.render('searach', {salesman: salesman, admin: request.session.user})
-	})
-})
+// // AJAX when search field is blank
+// router.post('/searchTotal', (request, response) => {
+// 	db.salesman.findAll().then( salesman => {
+// 		response.render('search', {salesman: salesman, admin: request.session.user})
+// 	})
+// })
 
 // AJAX Response when payment is succesfull
 router.post('/profile', (request, response) => {

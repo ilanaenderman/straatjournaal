@@ -60,16 +60,17 @@ html.no-js
 						li
 							a.active(href='/administratie') Administratie
 						li
-							a(href='/logout') log uit
+							a(href='/logout') Log uit
  
-	div#fh5co-about-section
+	div#fh5co-intro-section
 		div.container
-			div.row
-				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
-					h2 Pas gegevens aan
-			div.row
-				form(action='/update' method='post' autocomplete='off')
-					each thing in update
+			each thing in update
+				div.row
+					div.col-md-6.col-md-offset-3.text-center.fh5co-heading
+						h2 Pas gegevens aan
+						h4#message= message
+				div.row
+					form(action='/update' method='post' autocomplete='off')
 						div.col-md-6
 							div.row
 								div.col-md-12
@@ -86,34 +87,52 @@ html.no-js
 								div.col-md-12
 									div.form-group
 										textarea.form-control(name='bio' placeholder= thing.bio cols='30' rows='4')
-								div.col-md-12
-									div.form-group
-										input#salesmanID.form-control(name='salesmanID' value= thing.id type= 'hidden')
+								input#salesmanID.form-control(name='salesmanID' value= thing.id type= 'hidden')
 								div.col-md-12
 									div.form-group
 										input#photo.form-control(name='photo' placeholder='Upload foto' type='file')
-						div.col-md-6
+						div.col-md-12
 							div.form-group
 								input#button4.btn.btn-primary(value='Verander gegevens' type='submit')
+			
 
+			
+	div#fh5co-intro-section.fh5co-grey-bg-section
+		each thing in update
+			div.container
+				div.row
+					div.col-md-8.col-md-offset-2.text-center
+						h2 Verkoop overzicht
+						h4#message= message2
+				div.row
+					div.col-md-6.col-md-offset-3
+						p Aantal kranten: #{thing.saleAmount}
+						p Inkomsten: € #{thing.income}
+					div.col-md-6.col-md-offset-3
+						form(action='/paid' method='post' autocomplete='off')
+							div.form-group
+								input.form-control(name='id' value= thing.id type='hidden')
+							div.col-md-12.text-center
+								div.form-group
+									input.btn.btn-primary(value='Uitbetaald' type='submit')
+					
+
+	
+	div#fh5co-intro-section
+		div.container
+			div.row
+				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
+					h2 Verwijder profiel
+			div.row.text-center
 				form(action='/delete' method='post' autocomplete='off')
 					each thing in update
 						div.col-md-6
 							div.form-group
 								input.form-control(name='id' value= thing.id type='hidden')
-						div.col-md-6
+						div.col-md-12
 							div.form-group
-								input.btn.btn-primary(value='Verwijder profiel' type='submit')
-			h4= message
-			
-
-			
-	div#fh5co-intro-section.fh5co-grey-bg-section
-		div.container
-			div.row
-				div.col-md-8.col-md-offset-2.text-center
-					h2 Overzicht
-					p Hier kan je overzicht zien van alle verkopen
+								input.btn.btn-primary(value='Verwijder Profiel' type='submit')
+						
 
 			
 				

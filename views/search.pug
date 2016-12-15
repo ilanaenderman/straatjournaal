@@ -61,7 +61,12 @@ html.no-js
 							li
 						- else
 							li
-								a(href='/logout') log uit
+								a(href='/administratie') Administratie
+						- if(admin === undefined)
+							li
+						- else
+							li
+								a(href='/logout') Log uit
  
 	div#fh5co-blog-section
 		div.container
@@ -75,6 +80,11 @@ html.no-js
 								input.btn.btn-primary(value='Zoek verkoper' type='submit')
 
 			div.row
+			- salesman.sort(function(a,b){
+				- var textA = a.name.toUpperCase()
+				- var textB = b.name.toUpperCase()
+				- return(textA < textB) ? -1 : (textA > textB) ? 1 : 0 
+			- })
 			each thing in salesman
 				div.col-md-4.text-center
 					div.blog-inner
@@ -83,7 +93,8 @@ html.no-js
 						div.desc
 							h3
 								a(href='#') #{thing.name}
-							p Verkoopt het Straatjournaal in #{thing.location}
+							p Verkoopt het Straatjournaal in 
+							p #{thing.location}
 							p
 								form(method='post' action='/search')
 									button#button.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Lees meer

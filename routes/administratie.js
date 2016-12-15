@@ -7,8 +7,10 @@ const db		= require(__dirname + '/../modules/database')
 // GET
 
 router.get('/administratie', (request, response) => {
+	let user = request.session.user
+
 	db.user.findOne({
-		where: {id: db.user.id}
+		where: {id: user.id}
 	}).then( admin => {
 		db.salesman.findAll().then( salesman => {
 			response.render('administratie', {salesman: salesman, message: request.query.message})
@@ -36,7 +38,9 @@ router.post('/updateAdmin', (request, response) => {
 		age: age,
 		location: location,
 		bio: bio,
-		photo: photo
+		photo: photo,
+		saleAmount: 0,
+		income: 0
 	}).then( newProfile => {
 		db.salesman.findAll(
 			).then( salesman => {
@@ -65,7 +69,7 @@ router.post('/update', (request, response) => {
 			db.salesman.findAll({
 				where: {id: ID}
 			}).then( update => {
-				response.render('updateAdmin', {update: update, message: 'Gegevens veranderd'})
+				response.render('updateAdmin', {update: update, message: 'Gegevens zijn aangepast'})
 			})
 		})
 	})		
@@ -85,5 +89,24 @@ router.post('/delete', (request, response) => {
 	})
 })
 
+router.post('/paid', (request, response) => {
+	let ID 			= request.body.id
+
+	db.salesman.findOne({
+		where: {id: ID},
+		attributes: ['id', 'saleAmount', 'income']
+	}).then( paid => {
+		paid.update({
+			saleAmount: 0,
+			income: 0
+		}).then( paid => {
+			db.salesman.findAll({
+				where: {id: ID}
+			}).then( update => {
+				response.render('updateAdmin', {update: update, message2: 'Verkoper is uitbetaald.'})
+			})
+		})
+	})
+})
 
 module.exports = router

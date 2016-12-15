@@ -61,7 +61,12 @@ html.no-js
 							li
 						- else
 							li
-								a(href='/logout') log uit
+								a(href='/administratie') Administratie
+						- if(admin === undefined)
+							li
+						- else
+							li
+								a(href='/logout') Log uit
 
 	div#fh5co-intro-section
 		div.container
@@ -74,7 +79,7 @@ html.no-js
 		div.container
 			div.row
 				div.col-md-6.col-md-offset-3.text-center.fh5co-heading
-					h2 Ontmoet onze verkopers
+					h2 Ontmoet onze nieuwe verkopers
 					p Selecteer je lokale verkoper, lees hun verhaal en/of maak geld over voor een krant.
 
 			div.row
@@ -86,7 +91,8 @@ html.no-js
 						div.desc
 							h3
 								a(href='#') #{thing.name}
-							p Verkoopt het Straatjournaal in #{thing.location}
+							p Verkoopt het Straatjournaal in 
+							p #{thing.location}
 							p
 								form(method='post' action='/search')
 									button#button.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Lees meer
@@ -98,7 +104,8 @@ html.no-js
 						div.desc
 							h3
 								a(href='#') #{thing.name}
-							p Verkoopt het Straatjournaal in #{thing.location}
+							p Verkoopt het Straatjournaal in 
+							p #{thing.location}
 							p
 								form(method='post' action='/search')
 									button#button.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Lees meer
@@ -110,7 +117,8 @@ html.no-js
 						div.desc
 							h3
 								a(href='#') #{thing.name}
-							p Verkoopt het Straatjournaal in #{thing.location}
+							p Verkoopt het Straatjournaal in 
+							p #{thing.location}
 							p
 								form(method='post' action='/search')
 									button#button.btn.btn-primary.btn-outline(type='submit' href='/profile' value=thing.id name='ID') Lees meer

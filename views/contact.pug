@@ -61,7 +61,12 @@ html.no-js
 							li
 						- else
 							li
-								a(href='/logout') log uit
+								a(href='/administratie') Administratie
+						- if(admin === undefined)
+							li
+						- else
+							li
+								a(href='/logout') Log uit
 
 	div#fh5co-contact-section
 		div.container
@@ -74,15 +79,18 @@ html.no-js
 				div.col-md-3
 					h3 Contact info.
 					ul.contact-info
-						ul
-							i.sl-icon-map &nbsp;Nieuwe Groenmarkt 22, 2011 TW Haarlem
-						ul
-							i.sl-icon-phone &nbsp;023 551 2500
-						ul
-							i.sl-icon-envelope-open &nbsp;straatjournaal.gmail.com
-						ul
+						li
+							i.sl-icon-map
+							p Nieuwe Groenmarkt 22 2011 TW Haarlem
+						li
+							i.sl-icon-phone
+							p 023 551 2500
+						li.contact-info
+							i.sl-icon-envelope-open
+							p straatjournaal.gmail.com
+						li
 							i.sl-icon-globe
-								a(href='straatjournaal.com') &nbsp;straatjournaal.com
+							a(href='straatjournaal.com') straatjournaal.com
 
 				div.col-md-8.col-md-push-1.col-sm-12.col-sm-push-0.col-xs-12.col-xs-push-0
 					div.row
