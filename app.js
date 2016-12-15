@@ -30,18 +30,18 @@ app.use(session({
 
 
 // Initializing Mollie Api and setting Api key
-let mollie = new Mollie.API.Client
+let mollie 		= new Mollie.API.Client
 mollie.setApiKey("test_dHar4XY7LxsDOtmnkVtjNVWXLSlXsM")
 
 
 // Initialize Routes
-let homeRoute 	 = require(__dirname + '/routes/home')
-let searchRoute  = require(__dirname + '/routes/search')
-let contactRoute = require(__dirname + '/routes/contact')
-let aboutRoute 	 = require(__dirname + '/routes/about')
-let adminRoute 	 = require(__dirname + '/routes/administratie')
-let loginRoute 	 = require(__dirname + '/routes/login')
-let logoutRoute	 = require(__dirname + '/routes/logout')
+let homeRoute 	= require(__dirname + '/routes/home')
+let searchRoute = require(__dirname + '/routes/search')
+let contactRoute= require(__dirname + '/routes/contact')
+let aboutRoute 	= require(__dirname + '/routes/about')
+let adminRoute 	= require(__dirname + '/routes/administratie')
+let loginRoute  = require(__dirname + '/routes/login')
+let logoutRoute	= require(__dirname + '/routes/logout')
 
 app.use(homeRoute)
 app.use(searchRoute)

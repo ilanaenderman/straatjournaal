@@ -5,10 +5,12 @@ const session 	= require('express-session')
 const router	= express.Router( )
 const db		= require(__dirname + '/../modules/database')
 
+
 // Get 
 router.get('/login', (request, response) => {
 	response.render('login', {message: request.query.message})
 })
+
 
 // Post
 router.post('/login', (request, response) => {

@@ -8,6 +8,7 @@ $(document).ready( function () {
 	})
 })
 
+
 // Function on profile page. AJAX!! Send id salesman when customer buys a newspaper
 $(document).ready(function() {
     $('#button2').submit(function(event) {
@@ -21,6 +22,7 @@ $(document).ready(function() {
     	})
 	})
 })
+
 
 // Function on administratie page. AJAX!! Create new salesman profile
 $(document).ready( function () {

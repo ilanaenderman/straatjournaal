@@ -9,7 +9,6 @@ const db		= require(__dirname + '/../modules/database')
 // const upload 	= multer({storage: storage}).single('photo')
 
 // GET
-
 router.get('/administratie', (request, response) => {
 	let user = request.session.user
 
@@ -79,6 +78,7 @@ router.post('/update', (request, response) => {
 	})		
 })
 
+// Delete Profile
 router.post('/delete', (request, response) => {
 	let ID = request.body.id
 
@@ -93,6 +93,7 @@ router.post('/delete', (request, response) => {
 	})
 })
 
+// Update income information
 router.post('/paid', (request, response) => {
 	let ID 			= request.body.id
 

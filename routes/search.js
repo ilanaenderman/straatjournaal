@@ -4,14 +4,14 @@ const session 	= require('express-session')
 const router	= express.Router( )
 const db		= require(__dirname + '/../modules/database')
 
-// GET
 
+// GET
 router.get('/search', (request, response) => {
 	db.salesman.findAll().then( salesman => {
 		response.render('search', {salesman: salesman, admin: request.session.user})
 	})
 })
-// Goes to profile page of salesman
+// Go to profile page of salesman
 router.post('/search', (request, response) => {
 	db.salesman.findAll({
 		where: {id: request.body.ID}
@@ -89,6 +89,5 @@ router.post('/profile', (request, response) => {
 	})
 })
 
-	
 
 module.exports = router

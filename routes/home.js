@@ -4,8 +4,8 @@ const session 	= require('express-session')
 const router	= express.Router( )
 const db		= require(__dirname + '/../modules/database')
 
-// GET
 
+// GET Show three newest salesman
 router.get('/', (request, response) => {
 	db.salesman.max('id').then( max => {
 		let one		= max
@@ -34,6 +34,8 @@ router.get('/', (request, response) => {
 	})
 })
 
+
+// POST Go to profile
 router.post('/', (request, response) => {
 	db.salesman.findAll({
 		where: {id: request.body.ID}
