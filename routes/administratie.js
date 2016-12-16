@@ -3,10 +3,20 @@ const express 	= require( 'express')
 const session 	= require('express-session')
 const router	= express.Router( )
 const db		= require(__dirname + '/../modules/database')
-// const Multer	= require('multer')
 
-// const storage 	= 
-// const upload 	= multer({storage: storage}).single('photo')
+// Require Multer
+const multer	= require('multer')
+
+const storage 	= multer.diskStorage({
+	destination: function(req, file, callback) {
+		callback(null, "./static/images")
+	},
+	filename: function(req, file, callback) {
+		let newImage = file.fieldname + '-' + db.salesman.id
+		callback(null, newImage)
+	}
+})
+const upload 	= multer({storage: storage}).single('newImg')
 
 // GET
 router.get('/administratie', (request, response) => {
@@ -114,12 +124,33 @@ router.post('/paid', (request, response) => {
 	})
 })
 
-// router.post('/uploadPhoto', (request, response) => {
-// 	db.salesman.findAll({
-// 		where: {id: request.body.ID}
-// 	}).then( update => {
-// 		response.render('updateAdmin', {update: update})
-// 	})
-// })
+router.post('/uploadPhoto', (request, response) => {
+	let ID = request.body.id
+	upload(req, res, err => {
+		if(err){
+			console.log(err)
+			db.salesman.findAll({
+				where: {id: ID}
+			}).then( update => {
+				return res.render('updateAdmin', {message3: 'Het is niet gelukt uw foto toe te voegen.'})
+			})
+		} else {
+			db.salesman.findOne({
+				where: {id: ID}
+		}).then( photo => {
+			photo.updateAttributes({
+				photo: '/images/newImg' + ID
+			}).then(photo => {
+				db.salesman.findAll({
+					where: {id: ID}
+				}).then(update => {
+					res.render('updateAdmin', {update: update, message3: 'Foto toegevoegd.'})
+					})
+				})
+			})
+		}
+	})
+})
+
 
 module.exports = router

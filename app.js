@@ -31,7 +31,7 @@ app.use(session({
 
 // Initializing Mollie Api and setting Api key
 let mollie 		= new Mollie.API.Client
-mollie.setApiKey("test_dHar4XY7LxsDOtmnkVtjNVWXLSlXsM")
+mollie.setApiKey("test_ekKwfJhjFmhHaM3rs8BCjuadJpz6h3")
 
 
 // Initialize Routes
