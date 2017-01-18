@@ -97,15 +97,15 @@ html.no-js
 						div.row
 							div.col-md-8.col-md-offset-2.text-center
 								h2 Upload een profielfoto
-								h4#message3= message
+								h4#message= message3
 						div.row
 							div.col-md-6
 								form(action='/uploadPhoto' method='post' enctype='multipart/formdata' autocomplete='off')
 									div.col-md-12
 										div.form-group
 											label Kies Foto
-											input#photo.form-control(name='displayImage' placeholder='Upload foto' type='file')
-											input#salesmanID.form-control(name='ID' value='thing.id' type='hidden')
+											input#photo.form-control(name='photo' placeholder='Upload foto' type='file')
+											input#salesmanID.form-control(name='id' value=thing.id type='hidden')
 									div.col-md-12
 										div.form-group
 											input.btn.btn-primary(value='Zend' type='submit')

@@ -126,13 +126,13 @@ router.post('/paid', (request, response) => {
 
 router.post('/uploadPhoto', (request, response) => {
 	let ID = request.body.id
-	upload(req, res, err => {
-		if(err){
+	upload(request, response, err => {
+		if(err || request.body.photo == null){
 			console.log(err)
 			db.salesman.findAll({
 				where: {id: ID}
 			}).then( update => {
-				return res.render('updateAdmin', {message3: 'Het is niet gelukt uw foto toe te voegen.'})
+				return response.render('updateAdmin', {message3: 'Het is niet gelukt uw foto toe te voegen.'})
 			})
 		} else {
 			db.salesman.findOne({
@@ -144,7 +144,7 @@ router.post('/uploadPhoto', (request, response) => {
 				db.salesman.findAll({
 					where: {id: ID}
 				}).then(update => {
-					res.render('updateAdmin', {update: update, message3: 'Foto toegevoegd.'})
+					response.render('updateAdmin', {update: update, message3: 'Foto toegevoegd.'})
 					})
 				})
 			})
