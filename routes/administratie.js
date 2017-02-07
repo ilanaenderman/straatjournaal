@@ -41,6 +41,7 @@ router.post('/administratie', (request, response) => {
 
 router.post('/updateAdmin', (request, response) => {
 	let name 	= request.body.name
+	let lastName= request.body.lastName
 	let age		= request.body.age
 	let location= request.body.location
 	let bio		= request.body.bio
@@ -48,6 +49,7 @@ router.post('/updateAdmin', (request, response) => {
 	
 	db.salesman.create({
 		name: name,
+		lastName: lastName,
 		age: age,
 		location: location,
 		bio: bio,
@@ -68,6 +70,7 @@ router.post('/update', (request, response) => {
 	let ID 		   = request.body.salesmanID
 
 	if(request.body.name) (filter.name = request.body.name) && (attributes.push('name'))
+	if(request.body.lastName) (filter.name = request.body.lastName) && (attributes.push('lastName'))
 	if(request.body.age) (filter.age = request.body.age) && (attributes.push('age'))
 	if(request.body.location) (filter.location = request.body.location) && (attributes.push('location'))
 	if(request.body.bio) (filter.bio = request.body.bio) && (attributes.push('bio'))

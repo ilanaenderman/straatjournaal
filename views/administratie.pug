@@ -78,10 +78,13 @@ html.no-js
 						form(action='/updateAdmin' method='post' autocomplete='off')
 							div.col-md-6
 								div.row
-									div.col-md-12
+									div.col-md-6
 										div.form-group
 											input#name.form-control(name='name' placeholder='Naam' type='text'
 											required) 
+									div.col-md-6
+										div.form-group
+											input#lastName.form-control(name='lastName' placeholder="Voornaam" type='text' required)
 									div.col-md-12
 										div.form-group
 											input#age.form-control(name='age' placeholder='Leeftijd' type='text' required)
@@ -118,7 +121,7 @@ html.no-js
 									img.img-responsive(src= "images/image_4.jpg" alt='Blog')
 								div.desc
 									h3
-										a(href='#') #{thing.name}
+										a(href='#') #{thing.name} #{thing.lastName}
 									h5 Leeftijd: #{thing.age}
 									h5 Lokatie: #{thing.location}
 									h5 Inkomsten: € #{thing.income}

@@ -74,10 +74,12 @@ html.no-js
 						div.col-md-6.col-md-offset-3.text-center.fh5co-heading
 							h2 Ontmoet onze verkopers
 							p Selecteer je lokale verkoper, lees hun verhaal en/of maak geld over om een krant te kopen.
-							div.form-group
-										input#search.form-control(placeholder= 'Naam' type='text')
-							div.form-group
-										input.btn.btn-primary(value='Zoek verkoper' type='submit')
+							form(action='/searchSeller' method='post' autocomplete='off')
+								div.form-group
+											input#search.form-control(name='search' placeholder= 'Naam' type='text')
+								h4#message= message
+								div.form-group
+											input.btn.btn-primary(value='Zoek verkoper' type='submit')
 
 					div.row
 					- salesman.sort(function(a,b){
@@ -92,7 +94,7 @@ html.no-js
 									img.img-responsive(src= 'images/image_4.jpg' alt='Blog')
 								div.desc
 									h3
-										a(href='#') #{thing.name}
+										a(href='#') #{thing.name} #{thing.lastName}
 									p Verkoopt het Straatjournaal in 
 									p #{thing.location}
 									p

@@ -13,7 +13,7 @@ mollie.setApiKey("test_ekKwfJhjFmhHaM3rs8BCjuadJpz6h3")
 // GET
 router.get('/search', (request, response) => {
 	db.salesman.findAll().then( salesman => {
-		response.render('search', {salesman: salesman, admin: request.session.user})
+		response.render('search', {salesman: salesman, admin: request.session.user, message: request.query.message})
 	})
 })
 // Go to profile page of salesman
@@ -22,6 +22,22 @@ router.post('/search', (request, response) => {
 		where: {id: request.body.ID}
 	}).then( profile => {
 		response.render('profile', {profile: profile, admin: request.session.user})
+	})
+})
+
+// POST Search Seller
+router.post('/searchSeller', (request, response) => {
+	let search = request.body.search
+	db.salesman.findAll({
+		where: {name: search},
+		attributes: ['id', 'name', 'lastName', 'location']
+	}).then( salesman => {
+		if(salesman != 0) {
+			response.render('search', {salesman: salesman, admin: request.session.user})
+		}
+		else {
+			response.redirect('/search?message=' + encodeURIComponent("Verkoper niet gevonden. Probeer een andere naam."))
+		}
 	})
 })
 

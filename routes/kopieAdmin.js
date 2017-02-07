@@ -35,6 +35,7 @@ router.post('/updateAdmin', (request, response) => {
 	
 	db.salesman.create({
 		name: name,
+		lastName: lastName,
 		age: age,
 		location: location,
 		bio: bio,
