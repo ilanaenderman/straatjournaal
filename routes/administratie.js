@@ -1,22 +1,26 @@
 // Administratie Route
-const express 	= require( 'express')
+const express 	= require('express')
 const session 	= require('express-session')
 const router	= express.Router( )
+const sequelize = require('sequelize')
 const db		= require(__dirname + '/../modules/database')
 
-// Require Multer
-const multer	= require('multer')
 
+// Require Multer
+const multer 	= require('multer')
 const storage 	= multer.diskStorage({
+	// Declare where to save file
 	destination: function(req, file, callback) {
-		callback(null, "./static/images")
+		callback(null, "static/uploads")
 	},
+	// Declare how to name file
 	filename: function(req, file, callback) {
-		let newImage = file.fieldname + '-' + db.salesman.id
+		let newImage = file.fieldname + '-' + 1
 		callback(null, newImage)
 	}
 })
-const upload 	= multer({storage: storage}).single('newImg')
+const upload 	= multer({storage: storage})
+
 
 // GET
 router.get('/administratie', (request, response) => {
@@ -31,6 +35,7 @@ router.get('/administratie', (request, response) => {
 	})	
 })
 
+
 router.post('/administratie', (request, response) => {
 	db.salesman.findAll({
 		where: {id: request.body.ID}
@@ -38,6 +43,7 @@ router.post('/administratie', (request, response) => {
 		response.render('updateAdmin', {update: update})
 	})
 })
+
 
 router.post('/updateAdmin', (request, response) => {
 	let name 	= request.body.name
@@ -63,6 +69,7 @@ router.post('/updateAdmin', (request, response) => {
 			})
 	})
 })
+
 
 router.post('/update', (request, response) => {
 	let filter 	   = {}
@@ -91,6 +98,7 @@ router.post('/update', (request, response) => {
 	})		
 })
 
+
 // Delete Profile
 router.post('/delete', (request, response) => {
 	let ID = request.body.id
@@ -105,6 +113,7 @@ router.post('/delete', (request, response) => {
 		})
 	})
 })
+
 
 // Update income information
 router.post('/paid', (request, response) => {
@@ -127,33 +136,35 @@ router.post('/paid', (request, response) => {
 	})
 })
 
-router.post('/uploadPhoto', (request, response) => {
+
+router.post('/uploadPhoto', upload.single('photo'), (request, response, next) => {
 	let ID = request.body.id
-	upload(request, response, err => {
-		if(err || request.body.photo == null){
-			console.log(err)
-			db.salesman.findAll({
-				where: {id: ID}
-			}).then( update => {
-				return response.render('updateAdmin', {message3: 'Het is niet gelukt uw foto toe te voegen.'})
-			})
-		} else {
-			db.salesman.findOne({
-				where: {id: ID}
-		}).then( photo => {
-			photo.updateAttributes({
-				photo: '/images/newImg' + ID
+	db.salesman.findOne({
+		where: {id: ID}
+		}).then( user => {
+			user.updateAttributes({
+				photo: 'uploads/photo-' + ID
 			}).then(photo => {
 				db.salesman.findAll({
 					where: {id: ID}
 				}).then(update => {
 					response.render('updateAdmin', {update: update, message3: 'Foto toegevoegd.'})
-					})
-				})
 			})
-		}
+		})
 	})
 })
+
+router.post('/photo', upload.single('photo'), (request, response, next) => {
+	db.user.findOne({
+		where: {id: request.session.user.id}
+	}).then( user => {
+		user.updateAttributes({
+			photo: 'uploads/photo-' + request.session.user.id
+		})
+		response.redirect('/photo?message=' + encodeURIComponent('Your picture has been changed.'))
+	})
+})
+
 
 
 module.exports = router

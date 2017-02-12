@@ -30,7 +30,7 @@ router.post('/searchSeller', (request, response) => {
 	let search = request.body.search
 	db.salesman.findAll({
 		where: {name: search},
-		attributes: ['id', 'name', 'lastName', 'location']
+		attributes: ['id', 'name', 'lastName', 'location', 'photo']
 	}).then( salesman => {
 		if(salesman != 0) {
 			response.render('search', {salesman: salesman, admin: request.session.user})

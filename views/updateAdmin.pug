@@ -89,11 +89,8 @@ html.no-js
 									div.row
 										div.col-md-12
 											div.form-group
-												textarea.form-control(name='bio' placeholder= thing.bio cols='30' rows='4')
+												textarea.form-control(name='bio' placeholder= thing.bio cols='30' rows='6')
 										input#salesmanID.form-control(name='salesmanID' value= thing.id type= 'hidden')
-										div.col-md-12
-											div.form-group
-												input#photo.form-control(name='photo' placeholder='Upload foto' type='file')
 								div.col-md-12
 									div.form-group
 										input#button4.btn.btn-primary(value='Verander gegevens' type='submit')
@@ -103,7 +100,7 @@ html.no-js
 								h4#message= message3
 						div.row
 							div.col-md-6
-								form(action='/uploadPhoto' method='post' enctype='multipart/formdata' autocomplete='off')
+								form(action='/uploadPhoto' method='POST' enctype='multipart/form-data')
 									div.col-md-12
 										div.form-group
 											label Kies Foto

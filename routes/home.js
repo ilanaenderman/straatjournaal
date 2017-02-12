@@ -14,15 +14,15 @@ router.get('/', (request, response) => {
 
 		db.salesman.findAll({
 			where: { id: one},
-			attributes: ['id', 'name', 'lastName', 'location']
+			attributes: ['id', 'name', 'lastName', 'location', 'photo']
 		}).then( idOne => {
 			db.salesman.findAll({
 				where: {id: two},
-				attributes: ['id', 'name', 'lastName', 'location']
+				attributes: ['id', 'name', 'lastName', 'location', 'photo']
 			}).then( idTwo => {
 				db.salesman.findAll({
 					where: {id: three},
-					attributes: ['id', 'name', 'lastName', 'location']
+					attributes: ['id', 'name', 'lastName', 'location', 'photo']
 				}).then( idThree => {
 					console.log(idOne)
 					console.log(idTwo)
