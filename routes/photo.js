@@ -13,19 +13,20 @@ const storage 	= multer.diskStorage({
     },
     // Declare how to name file
     filename: function(req, file, callback) {
-        let newImage = file.fieldname + '-' + 1;
+        let newImage = file.fieldname + '-' + Date.now();
         callback(null, newImage)
     }
 });
 const upload 	= multer({storage: storage});
 
 router.post('/uploadPhoto', upload.single('photo'), (request, response, next) => {
-    let ID = request.body.id
+    let file = request.file;
+    let ID = request.body.id;
     db.salesman.findOne({
         where: {id: ID}
     }).then( user => {
         user.updateAttributes({
-            photo: 'uploads/photo-' + ID
+            photo: 'uploads/' + file.filename
         }).then(photo => {
             db.salesman.findAll({
                 where: {id: ID}
@@ -35,5 +36,4 @@ router.post('/uploadPhoto', upload.single('photo'), (request, response, next) =>
         })
     })
 })
-
 module.exports = router;
