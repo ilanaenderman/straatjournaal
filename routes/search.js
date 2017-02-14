@@ -1,19 +1,19 @@
 // Search Route
-const express 	= require( 'express')
-const session 	= require('express-session')
-const Mollie 	= require('mollie-api-node')
-const router	= express.Router( )
-const db		= require(__dirname + '/../modules/database')
+const express 	= require( 'express');
+const session 	= require('express-session');
+const Mollie 	= require('mollie-api-node');
+const router	= express.Router( );
+const db		= require(__dirname + '/../modules/database');
 
-let mollie 	= new Mollie.API.Client
-mollie.setApiKey("test_ekKwfJhjFmhHaM3rs8BCjuadJpz6h3")
+let mollie 	= new Mollie.API.Client;
+mollie.setApiKey("test_ekKwfJhjFmhHaM3rs8BCjuadJpz6h3");
 	
 
 
 // GET
 router.get('/search', (request, response) => {
 	db.salesman.findAll().then( salesman => {
-		response.render('search', {salesman: salesman, admin: request.session.user, message: request.query.message})
+		response.render('search', {salesman: salesman, admin: request.session.user, message: request.query.message});
 	})
 })
 // Go to profile page of salesman
@@ -21,7 +21,7 @@ router.post('/search', (request, response) => {
 	db.salesman.findAll({
 		where: {id: request.body.ID}
 	}).then( profile => {
-		response.render('profile', {profile: profile, admin: request.session.user})
+		response.render('profile', {profile: profile, admin: request.session.user});
 	})
 })
 
@@ -78,7 +78,7 @@ router.post('/profile', (request, response) => {
 		number: number,
 		saleAmount: saleAmount,
 		salesmanId: salesmanId
-	})
+	});
 
 	// Find salesman that belongs to the sale
 	db.salesman.findOne({
@@ -101,11 +101,11 @@ router.post('/profile', (request, response) => {
 			db.salesman.findAll({
 				where: {id: salesmanId}
 			}).then( profile => {
-				response.render('profile', {message: "Betaling gelukt", profile: profile, admin: request.session.user})
+				response.render('profile', {message: "Betaling gelukt", profile: profile, admin: request.session.user});
 			})
 		})	
 	})
 })
 
 
-module.exports = router
+module.exports = router;
