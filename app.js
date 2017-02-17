@@ -10,6 +10,7 @@ const sass 		 = require('node-sass');
 const Mollie	 = require('mollie-api-node');
 const Multer	 = require('multer');
 const app	 	 = express();
+const mongooseDB = require(__dirname + /modules/db.js)
 
 
 // Requiring Modules
